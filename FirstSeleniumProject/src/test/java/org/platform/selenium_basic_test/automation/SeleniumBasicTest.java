@@ -21,7 +21,7 @@ public class SeleniumBasicTest {
 		 * we are using the Chrome WebDriver and then providing the path to the 
      		 * location of the WebDriver file on the device used to create this project. 
                  * Also note that the filename must include .exe on Windows computers */
-		System.setProperty("webdriver.chrome.driver", "/Users/Student/Documents/chromedriver_win32/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/FirstSeleniumProject/");
 	}
