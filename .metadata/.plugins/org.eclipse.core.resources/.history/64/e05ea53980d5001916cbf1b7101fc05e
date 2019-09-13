@@ -1,0 +1,31 @@
+package org.platform.firstclass;
+
+public class House {
+	
+	private int bedrooms;
+	private int bathrooms;
+	private int area;
+	private String type;
+	private String color = "red";
+	
+	
+	public House(int bedrooms, int bathrooms, int sqFt, String type, String color) {
+		this.bathrooms = bathrooms;
+		this.bedrooms = bedrooms;
+		this.area = sqFt;
+		this.type = type;
+		this.color = color;
+	}
+	
+	public static void print(int carNumber, String carModel) {
+		System.out.println("Car :"+ carModel + "License Plate: "+ carNumber);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Housr myHouse = new House(, "Dodge", "Challenger");
+		print(myCar.number, myCar.model);
+	}
+
+}

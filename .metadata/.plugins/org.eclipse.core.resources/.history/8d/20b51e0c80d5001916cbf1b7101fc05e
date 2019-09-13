@@ -1,0 +1,27 @@
+package org.platform.firstclass;
+
+public class Card {
+	
+	private int number = 0;
+	private String color = "red";
+	private String make = "Dodge";
+	private String model = "Challenger";
+	
+	public Car(int number, String make, String model) {
+		this.number = number;
+		this.make = make;
+		this.model = model;
+	}
+	
+	public static void print(int carNumber, String carModel) {
+		System.out.println("Car :"+ carModel + "License Plate: "+ carNumber);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Car myCar = new Car(234678, "Dodge", "Challenger");
+		print(myCar.number, myCar.model);
+	}
+
+}
