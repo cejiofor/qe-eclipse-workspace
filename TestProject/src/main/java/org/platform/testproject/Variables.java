@@ -1,12 +1,13 @@
 package org.platform.testproject;
-
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 public class Variables {
 
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		int x = 5;
 		int y = 6;
@@ -22,7 +23,11 @@ public class Variables {
 		}
 		
 		ForLoops();
-		Alogorithm();
+		
+		int[] Bil = {5,4,7,6,9};
+		int[] sortedArr = BubbleSort(Bil);
+		
+		StudentScores();
 	}
 	
 	public static void ForLoops() {
@@ -44,37 +49,59 @@ public class Variables {
 		System.out.println("");
 	}
 	
-	public static void Alogorithm() {
-		int[] Bil = {5,4,7,6,9};
-		int n = 5;
+	public static int[] BubbleSort(int[] arr) {
+		int n = arr.length;
 		int i;
 		int j;
 		int temp;
-		System.out.println("Unsorted Array: "+Arrays.toString(Bil));
+		System.out.println("Unsorted Array: "+Arrays.toString(arr));
 		
 		for (i=1; i<= n-1; i++) {
 			for (j=n-1; j >= i; j--) {
-				if (Bil[j]<Bil[j-1]){
-					temp = Bil[j];
-					Bil[j] = Bil[j-1];
-					Bil[j-1] = temp;
+				if (arr[j]<arr[j-1]){
+					temp = arr[j];
+					arr[j] = arr[j-1];
+					arr[j-1] = temp;
 				}
 				else
 					continue;
 			}
 		}
 
-		System.out.println("Sorted Array: "+Arrays.toString(Bil));
+		System.out.println("Sorted Array: "+Arrays.toString(arr));
+		return arr;
 		
 	}
 	
-	public static void StudentScores() {
+	public static void StudentScores() throws IOException {
 //		Write a Java Application that allows the user to enter 
 //		24 students scores and store them in an Array. 
 //		The application should sort the scores and print out
 //		the minimum and maximum scores.
 		
-		Scanner StudentScore = new Scanner(System.in);
+//		Scanner StudentScore = new Scanner(System.in);
+//		File scores = new File("student_scores.txt");
+		
+		Random rand = new Random();
+		int[] scores = new int[24];
+		
+		File infile = new File("scores.txt");
+		PrintWriter scoreFile = new PrintWriter(infile);
+		for (int i = 0; i< 24; i++) {
+			int score = rand.nextInt(100);
+			System.out.println(score);
+			scoreFile.println(score);
+			scores[i] = score;
+		}
+		
+		scoreFile.close();
+		System.out.println(Arrays.toString(BubbleSort(scores)));
+		
+
+		
+		
+		
+		
 		
 		
 	}

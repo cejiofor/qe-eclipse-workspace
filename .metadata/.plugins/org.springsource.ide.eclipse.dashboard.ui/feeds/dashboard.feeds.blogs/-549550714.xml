@@ -92,6 +92,20 @@
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
+    <title>Goodbye http://repo.spring (use https)</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/09/16/goodbye-http-repo-spring-use-https" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2019-09-17:3801</id>
+    <updated>2019-09-16T13:09:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;In response to our &lt;a href="https://spring.io/blog/2019/06/10/announcing-nohttp"&gt;nohttp announcement&lt;/a&gt;, &lt;a href="https://central.sonatype.org/articles/2019/Apr/30/http-access-to-repo1mavenorg-and-repomavenapacheorg-is-being-deprecated/"&gt;Maven Central&amp;#8217;s announcement&lt;/a&gt;, and &lt;a href="https://jfrog.com/blog/secure-jcenter-with-https/"&gt;JFrog&amp;#8217;s announcement&lt;/a&gt;, beginning January 15 2020, Spring&amp;#8217;s Maven Repository will no longer support HTTP. More concretely, &lt;a href="http://repo.spring.io" class="bare"&gt;http://repo.spring.io&lt;/a&gt; will not respond to requests. Users will need to ensure that they are using &lt;a href="https://repo.spring.io" class="bare"&gt;https://repo.spring.io&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
     <title>Spring Boot for Apache Geode &amp; Pivotal GemFire 1.1.1.RELEASE &amp; 1.2.0.M2 Available!</title>
     <link rel="alternate" href="https://spring.io/blog/2019/09/13/spring-boot-for-apache-geode-pivotal-gemfire-1-1-1-release-1-2-0-m2-available" />
     <category term="releases" label="Releases" />
@@ -1147,24 +1161,6 @@ And let us know what you think!&lt;/p&gt;
   &lt;li&gt;&lt;a href="https://vladmihalcea.com/why-should-not-use-the-auto-jpa-generationtype-with-mysql-and-hibernate/"&gt;Why should not use the AUTO JPA GenerationType with MySQL and Hibernate - Vlad Mihalcea&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Baeldung blog has an interesting post on using &lt;a href="https://www.baeldung.com/jhipster-authentication-external-service"&gt;JHipster (which is based on Spring Boot and which in turn uses Spring Security) to externally authenticate&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: Google's James Ward, Okta's Matt Raible and Grand Cloud's Ryan Knight on the Simplicity Continuum</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/23/a-bootiful-podcast-google-s-james-ward-okta-s-matt-raible-and-grand-cloud-s-ryan-knight-on-the-simplicity-continuum" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-08-23:3780</id>
-    <updated>2019-08-23T19:58:54Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of a Bootiful Podcast! This week I had the pleasure of talking with Ryan Knight and with the two people with whom I am copresenting at SpringOne Platform 2019, James Ward and Matt Raible.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;James Ward on Twitter: &lt;a href="http://twitter.com/_JamesWard"&gt;@_JamesWard&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Matt Raible on Twitter: &lt;a href="http://twitter.com/MRaible"&gt;@mraible&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Ryan Knight on Twitter: &lt;a href="http://twitter.com/Knight_Cloud"&gt;@knight_cloud&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/670101815&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
