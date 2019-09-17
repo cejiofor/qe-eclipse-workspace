@@ -1,7 +1,6 @@
 package org.platform.testproject;
 
 import java.util.Arrays;
-
 public class Variables {
 
 	/**
@@ -74,6 +73,9 @@ public class Variables {
 //		24 students scores and store them in an Array. 
 //		The application should sort the scores and print out
 //		the minimum and maximum scores.
+		
+		Scanner StudentScore = new Scanner(System.in);
+		
 		
 	}
 }
