@@ -101,6 +101,7 @@ public class Variables {
 			int score = scoreQuery.nextInt();  
 			scores[i] = score;
 		}
+		scoreQuery.close();
 
 		// Create a new array with sorted values, then print the max and min values from the sorted array
 		int[] sortedScores = BubbleSort(scores);
