@@ -53,3 +53,5 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+qe-eclipse-workspace/chromedriver_win32/chromedriver.exe
+*.log
