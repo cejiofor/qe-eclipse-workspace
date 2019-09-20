@@ -1,9 +1,0 @@
-INDEX VERSION 1.131
-C:\dev\qe-eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1672329654.index
-\FirstWebProject\src
-C:\dev\eclipse-workspace\qe-eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1672329654.index
-\FirstWebProject\src
-C:\dev\qe-eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1091974554.index
-\Selenium_Locators\src\main\java
-C:\dev\eclipse-workspace\qe-eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1091974554.index
-\Selenium_Locators\src\main\java
