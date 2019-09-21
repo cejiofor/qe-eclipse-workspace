@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - StringAlg",
+            "request": "launch",
+            "mainClass": "main.java.org.platform.testproject.StringAlg"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Variables",
             "request": "launch",
             "mainClass": "org.platform.testproject.Variables"

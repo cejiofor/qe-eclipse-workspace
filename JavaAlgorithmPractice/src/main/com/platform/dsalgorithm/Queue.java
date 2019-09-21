@@ -1,4 +1,4 @@
-package org.platform.testproject;
+package com.platform.dsalgorithm;
 
 public class Queue{
     // Create a class to hold the queue data structure
