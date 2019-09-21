@@ -1,4 +1,4 @@
-package org.platform.testproject;
+package com.platform.dsalgorithm;
 
 import java.util.regex.Pattern;;
 
