@@ -39,9 +39,9 @@ public class StringAlgsTest{
         	assertTrue(arr.length == 3);
         }
         
-        //Confirm the precense of the word in the nested array
+        //Confirm the presence of the word in the nested array
         assertTrue(Arrays.asList(testArr[1]).contains("triangle"));
-        
+        // CAN DO USEING JUST LISTS/ARRAYLIST!!!, DONT NEED TO CONVERT TO LIST
     }
 
 }

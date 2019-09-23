@@ -1,0 +1,26 @@
+Team Members:
+-Brian Nguyen (SME)
+-Preeti
+-Cherno 
+-Christopher Ejiofor
+-Kavita Joshi
+
+Application Summary
+Browser based web application that provides an online game lobby match making service for poker. Targeting users that want to play games with friends and/or strangers online, provideing a place to play and chat with others.
+
+Requirements
+Business: provide an online game application for users to play with each other, friends, and strangers, through 
+
+User: Should be able to login or register. After first login/register go through a short tutorial on how to use the site. Users should have access to their last five games. User will have a virtual wallet, starts a new game with 100 chips. Guest users: guest can join rooms in each lobby, can join a game but don't have access to user history. Guest username with be 'Guest' with w string of random numbers
+
+System: Browser based web application for desktop and mobile based browser. Target Chrome, Safari, Firefox and IE 8. C# for develpment (unity/game). Maintain a database of user infomation, login data, and history for up to 5 games
+
+Funtionality: User (login or guest) open to a screen with open lobbies (max 15 per page, 100 lobbies total), max of 5 users per lobby. Users can join an open lobby or create a new lobby to invite others to. If a lobby is full, display an alert that a lobby is full. Have a logout button at top right. Inside each game there should be a chat box to talk with others in the game, as well as an option to report users for harrassment abuse of the chat room. Leaderboard of the top winners. There should be a help button at the top right for help with the game/site navigation. 
+
+If there are at least 2 but less than 5 a game can be started and users must wait until the game is over to join. At the end of game, provide an option to restart the game with those in the lobby or exit the lobby.
+
+The game should have a simple layout, with user hand in front of the (bottom of table) with username/display name in gold, and showing other players in white. The cards will be centerd in the table.
+
+Games functions: User game functionality -> bet, raise, call, fold, draw, pokeralso have a leave option to exit the game/lobby and open to another 
+
+Monetizaion: The will be no ads, there will be a persistent footer with a donate button/option on all pages

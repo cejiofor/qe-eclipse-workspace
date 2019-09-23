@@ -55,7 +55,13 @@ public class StringAlg{
 	}
 	
 	public static void main(String[] args) {
+		StringAlg sa = new StringAlg();
 		
+		sa.printSub();
+//      
+		String sample = "red,green,blue;square,triangle,circle;dog,cat,bird";
+		sa.stringToArray(sample);
+		sa.stringToNestedArray(sample);
 	}
 	
 
