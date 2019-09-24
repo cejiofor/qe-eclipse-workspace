@@ -8,14 +8,12 @@ CREATE TABLE student (
 
 DESCRIBE student;
 
-DROP TABLE student;
+-- DROP TABLE student;
 
 -- Add a columnd for gpa in format #.##
-ALTER TABLE student; ADD gpa DECIMAL(3,2);
+ALTER TABLE student ADD gpa DECIMAL(3,2) DEFAULT 3.50;
 
-
-ALTER TABLE DROP COLUMN gpa;
--- remove the gpa column
+ALTER TABLE student DROP COLUMN gpa; -- remove the gpa column
 
 INSERT INTO student VALUES (
     1, 'Jack', 'Biology'
@@ -108,7 +106,6 @@ WHERE major IN ('Biology', 'Chemistry') and student_id > 2;
 -- Need more complex data bases with more that one ta
 
 DROP TABLE student;
-DROP TABLE employee;
 
 CREATE TABLE employee (
     emp_id INT PRIMARY KEY,
@@ -141,6 +138,3 @@ ADD FOREIGN KEY (super_id)
 REFERENCES employee(emp_id)
 ON DELETE SET NULL;
 
-CREATE TABLE CLIENT(
-
-)
