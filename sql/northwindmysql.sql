@@ -3410,8 +3410,12 @@ INSERT INTO suppliers VALUES ('28', 'Gai pâturage', 'Eliane Noz', 'Sales Repres
 INSERT INTO suppliers VALUES ('29', 'Forêts d\'érables', 'Chantal Goulet', 'Accounting Manager', '148 rue Chasseur', 'Ste-Hyacinthe', 'Québec', 'J2S 7S8', 'Canada', '(514) 555-2955', '(514) 555-2921', null);
 
 
-SELECT * from categories
-
-
 -- ASSGINMENT
 -- SELECT (Column) FROM (Table) WHERE (Condition-> and/or)
+SELECT * FROM customers;
+SELECT Address FROM customers WHERE Country ='UK';
+SELECT * FROM orders;
+SELECT * FROM orders WHERE OrderDate > '1995-01-01' AND OrderDate < '1996-01-01'; 
+SELECT * FROM products;
+SELECT * FROM categories;
+SELECT * FROM order details;
