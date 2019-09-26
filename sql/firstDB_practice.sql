@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS student;
 CREATE TABLE student (
   student_id INT PRIMARY KEY,
   name VARCHAR(20),
@@ -7,8 +8,6 @@ CREATE TABLE student (
 );
 
 DESCRIBE student;
-
--- DROP TABLE student;
 
 -- Add a columnd for gpa in format #.##
 ALTER TABLE student ADD gpa DECIMAL(3,2) DEFAULT 3.50;
@@ -30,8 +29,8 @@ INSERT INTO student(student_id, name) VALUES (3, 'Mariah');
 INSERT INTO student VALUES (4, 'Jack', 'Biology');
 INSERT INTO student VALUES (5, 'John', 'Computer Science');
 
-drop table student;
 
+DROP TABLE IF EXISTS student;
 CREATE TABLE student (
   student_id INT,
   name VARCHAR(20) NOT NULL,
@@ -47,8 +46,7 @@ INSERT INTO student(student_id, name) VALUES (3, 'Mariah');
 INSERT INTO student VALUES (4, 'Jack', 'Biology');
 INSERT INTO student VALUES (5, 'John', 'Computer Science');
 
-DROP TABLE student;
-
+DROP TABLE IF EXISTS student;
 CREATE TABLE student (
   student_id INT AUTO_INCREMENT,
   -- AUTOMATICALLY increments the student id
@@ -78,8 +76,7 @@ where major = 'Bio' OR major = 'Chemistry';
 
 -- DELETE ROWS
 DELETE FROM student; -- deletes all rows
-DELETE FROM student
-WHERE student_id = 5;
+DELETE FROM student WHERE student_id = 5;
 
 SHOW TABLES;
 TRUNCATE student; -- Delete contecnts while maintaining the table strcuture
@@ -105,8 +102,8 @@ WHERE major IN ('Biology', 'Chemistry') and student_id > 2;
 
 -- Need more complex data bases with more that one ta
 
-DROP TABLE student;
-
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
     emp_id INT PRIMARY KEY,
     first_name VARCHAR(40),
@@ -118,6 +115,7 @@ CREATE TABLE employee (
     branch_id INT  
 );
 
+DROP TABLE IF EXISTS branch;
 CREATE TABLE branch (
     branch_id INT PRIMARY KEY,
     branch_name VARCHAR(40),

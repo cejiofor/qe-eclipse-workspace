@@ -3403,12 +3403,11 @@ INSERT INTO suppliers VALUES ('21', 'Lyngbysild', 'Niels Petersen', 'Sales Manag
 INSERT INTO suppliers VALUES ('22', 'Zaanse Snoepfabriek', 'Dirk Luchte', 'Accounting Manager', 'Verkoop\r\nRijnweg 22', 'Zaandam', null, '9999 ZZ', 'Netherlands', '(12345) 1212', '(12345) 1210', null);
 INSERT INTO suppliers VALUES ('23', 'Karkki Oy', 'Anne Heikkonen', 'Product Manager', 'Valtakatu 12', 'Lappeenranta', null, '53120', 'Finland', '(953) 10956', null, null);
 INSERT INTO suppliers VALUES ('24', 'G\'day, Mate', 'Wendy Mackenzie', 'Sales Representative', '170 Prince Edward Parade\r\nHunter\'s Hill', 'Sydney', 'NSW', '2042', 'Australia', '(02) 555-5914', '(02) 555-4873', 'G\'day Mate (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/gdaymate.htm#');
-INSERT INTO suppliers VALUES ('25', 'Ma Maison', 'Jean-Guy Lauzon', 'Marketing Manager', '2960 Rue St. Laurent', 'Montréal', 'Québec', 'H1J 1C3', 'Canada', '(514) 555-9022', null, null);
+INSERT INTO suppliers VALUES ('25',test 'Ma Maison', 'Jean-Guy Lauzon', 'Marketing Manager', '2960 Rue St. Laurent', 'Montréal', 'Québec', 'H1J 1C3', 'Canada', '(514) 555-9022', null, null);
 INSERT INTO suppliers VALUES ('26', 'Pasta Buttini s.r.l.', 'Giovanni Giudici', 'Order Administrator', 'Via dei Gelsomini, 153', 'Salerno', null, '84100', 'Italy', '(089) 6547665', '(089) 6547667', null);
 INSERT INTO suppliers VALUES ('27', 'Escargots Nouveaux', 'Marie Delamare', 'Sales Manager', '22, rue H. Voiron', 'Montceau', null, '71300', 'France', '85.57.00.07', null, null);
 INSERT INTO suppliers VALUES ('28', 'Gai pâturage', 'Eliane Noz', 'Sales Representative', 'Bat. B\r\n3, rue des Alpes', 'Annecy', null, '74000', 'France', '38.76.98.06', '38.76.98.58', null);
 INSERT INTO suppliers VALUES ('29', 'Forêts d\'érables', 'Chantal Goulet', 'Accounting Manager', '148 rue Chasseur', 'Ste-Hyacinthe', 'Québec', 'J2S 7S8', 'Canada', '(514) 555-2955', '(514) 555-2921', null);
-
 
 -- ASSGINMENT
 -- SELECT (Column) FROM (Table) WHERE (Condition-> and/or)
@@ -3419,3 +3418,11 @@ SELECT * FROM orders WHERE OrderDate > '1995-01-01' AND OrderDate < '1996-01-01'
 SELECT * FROM products;
 SELECT * FROM categories;
 SELECT * FROM order details;
+
+-- ASSGINMENT
+-- Work on Join for tables
+-- For next week, hands on in class, will move quikly to practice
+
+-- Aggregare functions in SQL
+-- ex sum, average, min, max
+
