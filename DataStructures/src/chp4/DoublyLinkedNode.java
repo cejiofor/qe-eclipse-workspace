@@ -1,0 +1,42 @@
+package chp4;
+
+public class DoublyLinkedNode {
+	// Data in note, with ref to the next node and the previous node
+	private int data;
+	private DoublyLinkedNode nextNode;
+	private DoublyLinkedNode previousNode;
+	
+	public DoublyLinkedNode(int data) {
+		//constructor to set the data for the node
+		this.data = data;
+	}
+	
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int data) {
+		this.data = data;
+	}
+
+	public DoublyLinkedNode getNextNode() {
+		return nextNode;
+	}
+
+	public void setNextNode(DoublyLinkedNode nextNode) {
+		this.nextNode = nextNode;
+	}
+
+	public DoublyLinkedNode getPreviousNode() {
+		return previousNode;
+	}
+
+	public void setPreviousNode(DoublyLinkedNode previousNode) {
+		this.previousNode = previousNode;
+	}
+
+//	@Override
+//	public String toString() {
+//		return this.data.toString();
+//	} 
+}
