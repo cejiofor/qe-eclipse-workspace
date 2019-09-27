@@ -19,20 +19,20 @@ INSERT INTO students(name, score) VALUES('Mavin', 58);
 
 SELECT * FROM students;
 
-SELECT name,score,
+SELECT name,score, -- columns to return after case is run
 CASE 
-WHEN score >=90 and score <= 100 THEN "A"
-WHEN score >=80 and score <= 89 THEN "B"
-WHEN score >=70 and score <= 79 THEN "C"
+	WHEN score >=90 and score <= 100 THEN "A"
+	WHEN score >=80 and score <= 89 THEN "B"
+	WHEN score >=70 and score <= 79 THEN "C"
 ELSE "Failed, less than a c"
-END AS grade
+END AS grade -- end of the functions, followed by alias -> the column name for the output, defaults to Case 
 FROM students;
 
 SELECT name,score,
 CASE 
-WHEN score >=90 and score <= 100 THEN "A"
-WHEN score >=80 THEN "B"
-WHEN score >=70 THEN "C"
+	WHEN score >=90 and score <= 100 THEN "A"
+	WHEN score >=80 THEN "B"
+	WHEN score >=70 THEN "C"
 ELSE "Failed, less than a c"
 END AS grade
 FROM students;
