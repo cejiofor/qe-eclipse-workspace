@@ -102,12 +102,12 @@ WHERE major IN ('Biology', 'Chemistry') and student_id > 2;
 
 -- Need more complex data bases with more that one ta
 
--- DROP TABLE IF EXISTS student;
--- DROP TABLE IF EXISTS works_with;
--- DROP TABLE IF EXISTS client;
--- DROP TABLE IF EXISTS branch_supplier;
--- DROP TABLE IF EXISTS branch;
--- DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS works_with;
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS branch_supplier;
+DROP TABLE IF EXISTS branch;
+DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee (
     emp_id INT PRIMARY KEY,
@@ -239,3 +239,4 @@ SELECT * FROM branch_supplier;
 SELECT * FROM client;
 SELECT * FROM works_with;
 
+SELECT * FROM employee Inner JOIN works_with on employee.emp_id = works_with.emp_id SUM(works_with.total_sales);
