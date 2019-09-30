@@ -35,6 +35,11 @@ public class Student {
 		this.courseSelected = courseSelected;
 	}
 	
+	@Override
+	public String toString() {
+		String printStmt =  String.format("ID: %d, Name: %s, Email: %s, Course: %s", studentId, name, email, courseSelected);
+		return printStmt;
+	}
 	
 	
 }

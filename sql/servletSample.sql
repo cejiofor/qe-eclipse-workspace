@@ -14,3 +14,18 @@ INSERT INTO students VALUES (4, 'Jack', 'jacke@school.com', 'Biology');
 INSERT INTO students VALUES (5, 'John', 'john@school.com', 'Computer Science');
 
 SELECT * FROM Students;
+
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users (
+	user_id INT AUTO_INCREMENT,
+	username VARCHAR(100),
+	password VARCHAR(100),
+	PRIMARY KEY (user_id)
+);
+
+INSERT INTO users VALUES (1, 'monkey', 'monkey123');
+INSERT INTO users VALUES (2, 'letters', 'abcd123');
+INSERT INTO users VALUES (3, 'numbers', '123456');
+INSERT INTO users VALUES (4, 'barrack', 'obama');
+
+SELECT * FROM users;

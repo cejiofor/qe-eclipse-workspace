@@ -13,8 +13,6 @@ import com.platform.servlet_class_demo.models.Student;
 //Student Data Access Object Class
 public class StudentDAO {
 	
-	
-	
 	public void testConnection() {
 		MariaDBConnection mariadbConnection = new MariaDBConnection();
 		try {
@@ -28,7 +26,7 @@ public class StudentDAO {
 	}
 	
 	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
-		Student[] studentArr = new Student[]{};
+		ArrayList<Student> studentList = new ArrayList<Student>();
 		
 		// Create ArrayList to hold values for student properties
 		ArrayList<Integer> studentId = new ArrayList<Integer>();
@@ -51,34 +49,30 @@ public class StudentDAO {
 		// Statement needed to run the sql query
 		Statement newQuery = sqlConnect.createStatement();
 		
-		// run the sq query and return the results to a ResultSet variable
+		// run the sql query and return the results to a ResultSet variable
 		ResultSet results = newQuery.executeQuery(sqlQuery);
 		
-		// iterate through the java result set
+		// iterate through the java result set and set student properties from ArrayList properties
 		while (results.next())
 		{
-			studentId.add(results.getInt("student_id"));
-			name.add(results.getString("name"));
-			email.add(results.getString("email"));
-			courseSelected.add(results.getString("course_selected"));
+			Student student = new Student();
+			student.setStudentId(results.getInt("student_id"));
+			student.setName(results.getString("name"));
+			student.setEmail(results.getString("email"));
+			student.setCourseSelected(results.getString("course_selected"));
+			studentList.add(student);
+			System.out.println(student.toString());
 		}
 		
-		// Loop over student array and set student properties from ArrayList properties
-		int i = 0;
-		for(Student student: studentArr) {
-			student.setStudentId(studentId.get(i));
-			student.setName(name.get(i));
-			student.setEmail(email.get(i));
-			student.setCourseSelected(courseSelected.get(i));
-			i++;
-		}
-		
-		System.out.println(studentArr);
+	
+		 
 		sqlConnect.close();
 		return;
+		
 //		Assignment -> create  a login page with username, password, and login button
 //		create A TABLE users with id, username, and password
-//		write a java application that make sure the username and password entered match the database
+//		write a java application that make sure the username and password 
+//		entered match the database
 //		if so, take user to a welcome page
 //		
 	}
