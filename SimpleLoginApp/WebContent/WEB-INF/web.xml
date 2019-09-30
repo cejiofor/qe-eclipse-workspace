@@ -10,3 +10,14 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
+
+<!-- Alt - map to servlet based on Login action from the form tag in jsp/html -->
+<!--  <servlet>
+  <servlet-name>ServletServlet</servlet-name>
+  <servlet-class>weblogic.servlet.ServletServlet</servlet-class> 
+</servlet>
+<servlet-mapping>
+
+<servlet-name>ServletServlet</servlet-name>
+  <url-pattern>/myservlet/*</url-pattern>
+</servlet-mapping>  -->

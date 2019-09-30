@@ -1,6 +1,7 @@
 package com.platform.simpleloginapp.dao;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -41,10 +42,10 @@ public class LoginServlet extends HttpServlet {
 		SimpleLoginDAO loginDAO = new SimpleLoginDAO();
 		String user = request.getParameter("userName");
 		String password = request.getParameter("password");
-		HashMap<String, String> validUsers = loginDAO.validUsers();
+		HashMap<String, String> validUsers = null;
 		
 		try {
-			HashMap<String, String> validUsers = loginDAO.validUsers();
+			validUsers = loginDAO.validUsers();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,14 +53,18 @@ public class LoginServlet extends HttpServlet {
 		
 		if (validUsers.containsKey(user)){
 			if (password.equals(validUsers.get(user))) {
-				
+				response.sendRedirect("welcome.html");
 			}
 			else {
-				
+				PrintWriter out = response.getWriter();
+				out.println("alert('Password is incorrect');");
+				   
 			}
 		}
 		else {
-			
+			PrintWriter out = response.getWriter();
+			out.println("alert('User dies not exisit!');");
+			   
 		}
 		
 		doGet(request, response);

@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
+//Assignment -> create  a login page with username, password, and login button
+//create A TABLE users with id, username, and password
+//write a java application that make sure the username and password 
+//entered match the database
+//if so, take user to a welcome page
+
 public class SimpleLoginDAO {
 	public void testConnection() {
 		MariaDBConnection mariadbConnection = new MariaDBConnection();
