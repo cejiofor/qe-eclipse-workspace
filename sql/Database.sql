@@ -77,10 +77,6 @@ INSERT INTO ORDER_ITEMS VALUES(6,1,2);
 INSERT INTO ORDER_ITEMS VALUES(7,1,2);
 INSERT INTO ORDER_ITEMS VALUES(8,1,2);
 
-select * from users;
-select * from orders;
-
-
 -- 1. Create a query to return all orders made by users with the first name of “Marion” 
 
 select * from orders where order_id in 
@@ -134,4 +130,13 @@ group by name;
 -- 		iii. If the store has been involved with 1 or less orders, mark as ‘Low’ d. 
 -- 		iiii Should be ordered by the Order Quantity in Descending Order 
 
-Select s.name, o.order_ID, (distinct o.order_ID) from stores s join orders o on s.STORE_ID = o.store_id
+SELECT NAME AS `Store Name`, COUNT(s.store_id) AS `Order Quantity`,
+Case
+	When COUNT(s.store_id) >= 3 Then "High"
+	When COUNT(s.store_id) > 1 AND COUNT(s.store_id) < 3 Then "Medium"
+	When COUNT(s.store_id) <= 1 Then "Low"
+END AS `Sales Figures`
+from stores s 
+join orders o ON s.STORE_ID = o.STORE_ID 
+GROUP BY s.store_id ORDER BY `Order Quantity` DESC;
+
