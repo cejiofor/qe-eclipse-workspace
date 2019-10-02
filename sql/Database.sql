@@ -112,12 +112,15 @@ order by order_id;
 -- found as (Item Price * Total Quantity Ordered). 
 -- Please return the first column as ‘ITEM_NAME’ and the second column as ‘REVENUE’.
 
-select name, sum(quantity*price) as REVENUE from 
-(select o.order_id, i.name, oi.quantity, i.price from 
-order_items oi 
-join items i on oi.item_id = i.item_id
-join orders o on o.ORDER_ID = oi.order_id) as sumj
-group by name;
+select name as `ITEM NAME`, sum(quantity*price) as REVENUE 
+from (
+	select o.order_id, i.name, oi.quantity, i.price 
+		from order_items oi 
+		join items i 
+		on oi.item_id = i.item_id
+		join orders o 
+		on o.ORDER_ID = oi.order_id)
+		group by name;
 
 -- 6. Create a query with the following output:
 -- 	a. Column 1 - Store Name 
@@ -130,13 +133,13 @@ group by name;
 -- 		iii. If the store has been involved with 1 or less orders, mark as ‘Low’ d. 
 -- 		iiii Should be ordered by the Order Quantity in Descending Order 
 
-SELECT NAME AS `Store Name`, COUNT(s.store_id) AS `Order Quantity`,
+SELECT NAME AS `Store Name`, COUNT(o.store_id) AS `Order Quantity`,
 Case
-	When COUNT(s.store_id) >= 3 Then "High"
-	When COUNT(s.store_id) > 1 AND COUNT(s.store_id) < 3 Then "Medium"
-	When COUNT(s.store_id) <= 1 Then "Low"
+	When COUNT(o.store_id) > 3 Then "High"
+	When COUNT(o.store_id) > 1 AND COUNT(s.store_id) <= 3 Then "Medium"
+	When COUNT(o.store_id) <= 1 Then "Low"
 END AS `Sales Figures`
-from stores s 
-join orders o ON s.STORE_ID = o.STORE_ID 
+from orders o
+join stores s ON s.STORE_ID = o.STORE_ID 
 GROUP BY s.store_id ORDER BY `Order Quantity` DESC;
 
