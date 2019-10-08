@@ -1,5 +1,14 @@
 package com.perscholas.java_basics;
 
+import java.util.Date;
+import java.util.Locale;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.*;
 
@@ -35,11 +44,11 @@ class JavaBasicsClass {
 		x = 5;
 		y = 6;
 		
-		int q = y/x;
+		double q = y/x;
 		System.out.println(q);
 		double Y = (double) y;
-		double Q = (double) q;
-		System.out.println((double) q);
+		q = Y/x;
+		System.out.println(q);
 		
 		final double CONST_NUM = 35;
 		System.out.println(CONST_NUM);
@@ -261,116 +270,66 @@ class JavaBasicsClass {
 	}
 	 
 	public static void arrayPractice() {
-//		Write a program that creates an array of integers with length of 3. Assign the values 1, 2 and 3 to to the indexes. Print out each index.
+//	Write a program that creates an array of integers with length of 3. Assign the values 1, 2 and 3 to to the indexes. Print out each index.
+
+
+//	Write a program that returns the middle element in an array. Give the following values to the integer array: {13, 5, 7, 68, 2} and produce the following output: 7
+
+
+//	Write a program that creates an array of String type and initializes it with the strings “red”, “green”, “blue” and “yellow”. Print out the array length. Make a copy using the clone( ) method. Use the Arrays.toString( ) method on the new array to verify that the original array was copied.
+
+
+//	Write a program that creates an integer array with 5 elements (i.e., numbers). The numbers can be any integers.  Print out the value at the first index, the last index using length - 1 as the index. Now try printing the value at index = length ( e.g., myArray[myArray.length - 1] ).  Notice the type of exception which is produced. Now try to assign a value to the array index 5. You should get the same type of exception.
+
+
+//	Write a program where you create an integer array with a length of 5. Loop through the array and assign the value of the loop control variable (e.g., i) to the corresponding index in the array.
 //
 //		 
 //
-//		Write a program that returns the middle element in an array. Give the following values to the integer array: {13, 5, 7, 68, 2} and produce the following output: 7
+// Write a program where you create an integer array of 5 numbers. Loop through the array and assign the value of the loop control variable multiplied by 2 to the corresponding index in the array.
 //
 //		 
 //
-//		Write a program that creates an array of String type and initializes it with the strings “red”, “green”, “blue” and “yellow”. Print out the array length. Make a copy using the clone( ) method. Use the Arrays.toString( ) method on the new array to verify that the original array was copied.
-//
-//		 
-//
-//		Write a program that creates an integer array with 5 elements (i.e., numbers). The numbers can be any integers.  Print out the value at the first index, the last index using length - 1 as the index. Now try printing the value at index = length ( e.g., myArray[myArray.length - 1] ).  Notice the type of exception which is produced. Now try to assign a value to the array index 5. You should get the same type of exception.
-//
-//		 
-//
-//		Write a program where you create an integer array with a length of 5. Loop through the array and assign the value of the loop control variable (e.g., i) to the corresponding index in the array.
-//
-//		 
-//
-//		Write a program where you create an integer array of 5 numbers. Loop through the array and assign the value of the loop control variable multiplied by 2 to the corresponding index in the array.
-//
-//		 
-//
-//		Write a program where you create an array of 5 elements. Loop through the array and print the value of each element, except for the middle (index 2) element.
-//
-//		 
-//
-//		Write a program that creates a String array of 5 elements and swaps the first element with the middle element without creating a new array.
-//
-//		 
-//
-//		Write a program to sort the following int array in ascending order: {4, 2, 9, 13, 1, 0}. Print the array in ascending order, print the smallest and the largest element of the array. The output will look like the following:
-//
-//		Array in ascending order: 0, 1, 2, 4, 9, 13
-//
-//		The smallest number is 0
-//
-//		The biggest number is 13
-//
-//		 
-//
-//		Create an array that includes an integer, 3 strings, and 1 double. Print the array.
+// Write a program where you create an array of 5 elements. Loop through the array and print the value of each element, except for the middle (index 2) element.
+
+
+// Write a program that creates a String array of 5 elements and swaps the first element with the middle element without creating a new array.
+		
+		
+//	Write a program to sort the following int array in ascending order: {4, 2, 9, 13, 1, 0}. Print the array in ascending order, print the smallest and the largest element of the array. The output will look like the following:
+//	Array in ascending order: 0, 1, 2, 4, 9, 13
+//	The smallest number is 0, The biggest number is 13
+		
+		// Bubble sort
+		// Check the number at the current index to the number in the next index
+		// Move the larger number towards the end of the array
+		// Loop over the array moving the largest element to the last index
+		// At the end of the array, loop again, comparing all numbers except the last sorted
+		
+		int[] rawArr = {4, 2, 9, 13, 1, 0};
+		int[] sortedArr = rawArr.clone();
+		int temp = 0;
+		
+		for (int i = 0; i<sortedArr.length-1; i++) {
+			for (int j = 0; j<sortedArr.length-i-1; j++) {
+				if (sortedArr[j] > sortedArr[j+1]) {
+					temp = sortedArr[j];
+					sortedArr[j] = sortedArr[j+1];
+					sortedArr[j+1] = temp;
+				}
+			} 
+		}
+
+		System.out.println(Arrays.toString(rawArr));
+		System.out.println(Arrays.toString(sortedArr));
+		
+		
+//	Create an array that includes an integer, 3 strings, and 1 double. Print the array.
+		Object[] objArray = new Object[] {5, "The", "dog", "Ate", 3.45};
+		System.out.println(Arrays.toString(objArray));
 	}
 
 	public static void regExpPractice() {
-//		Write a program that creates a String variable and initializes it with a phrase or series of words such as “Don’t repeat yourself”. Use the String split( ) method to split the words into a String array and loop through the array and print each word. Try different characters as splitters such as 2 spaces, a comma, an asterisk, etc.
-//
-//		 
-//
-//		Write a program which creates the following array:
-//
-//		String[ ] names = new String[ ] {“Doe,John”, “Doe ,Jane”, “Doe , James”, “Doe, Joan” }
-//
-//		 
-//
-//		Now produce the following output with no spaces before or after each name (hint: use the String method trim( ) ):
-//
-//		First Name:John
-//
-//		Last Name:Doe
-//
-//		First Name:Jane
-//
-//		Last Name:Doe
-//
-//		First Name:James
-//
-//		Last Name:Doe
-//
-//		First Name:Joan
-//
-//		Last Name:Doe
-//
-//		 
-//
-//		Create the following array of strings:
-//
-//		String[] searchFound = {"youhavefoundme", "youdidntfindme", "notinthisone", "itisfoundhere"};
-//
-//		 
-//
-//		Write a program that uses the Pattern and Matcher classes along with a for loop to produce the following ouput:
-//
-//		 
-//
-//		I found it! :  youhavefoundme
-//
-//		I found it! :  itisfoundhere
-//
-//		 
-//
-//		Write a program that returns the number of times the character 'o' occurs in the string "Hello World". The following output will be produced: 2
-//
-//		 
-//
-//		Write a program that tests if a string represents a valid css hexidecimal color such as “#2255aa” or “#253”.
-	}
-
-	
-	public static void main(String[] args) {
-		variablesPractice();
-		stringPractice();
-		operatorsPractice();
-//		controlFlowPractice();
-//		loopPractice();
-//		moreStringPractice();
-//		arrayPractice();
-//		regExpPractice();
-		
 		Pattern pattern = Pattern.compile("found");
 		String sample = "sdffdsfoundsdfljkjsdfoundsdklfoweirufoundcvb";
 		Matcher matcher = pattern.matcher(sample);
@@ -378,6 +337,102 @@ class JavaBasicsClass {
 		while (matcher.find()) {
 			System.out.println("Found one!");
 		}
+		
+//	Write a program that creates a String variable and initializes it with a phrase or series of words such as “Don’t repeat yourself”. Use the String split( ) method to split the words into a String array and loop through the array and print each word. Try different characters as splitters such as 2 spaces, a comma, an asterisk, etc.
+
+		
+//	Write a program which creates the following array:
+	// String[ ] names = new String[ ] {“Doe,John”, “Doe ,Jane”, “Doe , James”, “Doe, Joan” }
+//	Now produce the following output with no spaces before or after each name (hint: use the String method trim( ) ):
+//	First Name:John
+//	Last Name:Doe
+// 	First Name:Jane
+//	Last Name:Doe
+//	First Name:James
+//	Last Name:Doe
+//	First Name:Joan
+//	Last Name:Doe
+
+		
+//	Create the following array of strings:
+//	String[] searchFound = {"youhavefoundme", "youdidntfindme", "notinthisone", "itisfoundhere"};
+//	Write a program that uses the Pattern and Matcher classes along with a for loop to produce the following ouput:
+//		I found it! :  youhavefoundme
+//		I found it! :  itisfoundhere
+
+//	Write a program that returns the number of times the character 'o' occurs in the string "Hello World". The following output will be produced: 2
+
+
+//	Write a program that tests if a string represents a valid css hexidecimal color such as “#2255aa” or “#253”.
+		
 	}
 
+	public static void myAge() throws ParseException {
+		// Get & print the current date & time
+//		String dataStr = "2011-10-06T12: 00: 00-08: 00";
+//		SimpleDateFormat dataParser = new SimpleDateFormat ("dd / MM / yyyy HH: mm: ss", Locale.US);
+//		Date date;
+//		date = dataParser.parse (dataStr);
+//		System.out.println (dataParser.format (date));
+		
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("Enter your DOB, Format as Month Day, Year");
+//		String DOB = sc.next();
+		String DOB = "01/30/1992";
+		
+		//DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+//		DateFormat df = new SimpleDateFormat("MMMM dd, yyyy");
+//		DateTimeFormatter df = new DateTimeFormatter("MM/dd/yyyy");
+		LocalDate birthDate = LocalDate.parse(DOB);
+		System.out.println(birthDate);
+		
+		LocalDate currentDate = LocalDate.now();
+		System.out.println("The current date & time is " + currentDate);
+		
+		Period period = Period.between(birthDate, currentDate);
+		long diff = Math.abs(period.getDays());
+		System.out.println(diff);	
+	}
+	
+	public static void main(String[] args) throws ParseException {
+//		variablesPractice();
+//		stringPractice();
+//		operatorsPractice();
+//		controlFlowPractice();
+//		loopPractice();
+//		moreStringPractice();
+//		arrayPractice();
+//		regExpPractice();
+		
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+		String s = dtf.format(currentDateTime);
+		System.out.println("Today's date is: " + s);
+		// Create a LocalDate object and print it
+		LocalDate platformLaunchDate = LocalDate.of(2018, 3, 5);
+		System.out.println("Platform launch date: " + platformLaunchDate);
+		// Compare 2 LocalDate objects
+		LocalDate today = LocalDate.now();
+		int c = today.compareTo(platformLaunchDate);
+		if (c > 0) {
+			System.out.println("Today is later than Platform Dallas launch date");
+		}
+		// Calculate difference between 2 LocalDateTime objects
+		LocalDateTime platformLaunchTime = LocalDateTime.of(2018, 03, 5, 9, 0);
+		long t = ChronoUnit.MINUTES.between(platformLaunchTime, currentDateTime);
+		System.out.println("Minutes since Platform launch: " + t);
+		
+		
+		// Get & print the current date & time
+		Date currentTime = new Date();
+		System.out.println("The current date & time is " + currentTime);
+		// Print the current date & time in a specified format
+		SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+		String currentTimeString = sdf.format(currentTime);
+		System.out.println(currentTimeString);
+		
+		System.out.println();
+		myAge();
+		
+	}
 }
