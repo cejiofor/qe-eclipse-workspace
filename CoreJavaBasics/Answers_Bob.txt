@@ -1,5 +1,5 @@
-Name: Bob
+Name: bob
 Q1 Answer: A
-Q2 Answer: B
-Q3 Answer: C
-Q4 Answer: S
+Q2 Answer: A
+Q3 Answer: A
+Q4 Answer: A

@@ -46,9 +46,13 @@ public abstract class Product {
 		this.quantity = quantity;
 	}
 	
-	public void calculateProductTotal() {
-
-	}
+	public abstract double calculateProductTotal();
+	
+	public abstract void addOptions();
+	
+	public abstract void printOptions();
+	
+	
 	
 	
 }

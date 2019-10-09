@@ -37,6 +37,29 @@ public class JavaOOPClass {
 //	3: Espresso
 //	4: Check Out
 
+/*
+ * Store Class
+ * 	Runs the menu method
+ *  check input, runs add item method from shopping cart, adds items to the shopping cart object based on response
+ *  At check out, runs a checkout method, looping over items in cart and printing info from methods
+ *  Get cart subtotal and total from cart methods
+ *  
+ * Shopping Class
+ * 	Stores all the items in a list as an attirbute
+ *  has subotal and total attributes
+ *  has add item method to add item to cart that creates object and adds the item to the list
+ *  	uses print options to see what options they can add for each item
+ *  	scanner used to retreive items, then addPtions besed on respose
+ *  
+ *  
+ *  
+ *  	
+ */
+	
+	
+	
+	
+	
 //	Proceed to checkout.
 //	Item:	Espresso	Price: 3.99	Qty: 1	 Subtotal: 4.99
 //		Extra Shot: No	Machiatto: Yes (Add $1)
