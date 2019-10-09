@@ -6,6 +6,9 @@ public class Coffee extends Product {
 	
 	public Coffee(){
 		super();
+		this.setName("Coffee");
+		this.setDescription("A cup of coffee");
+		this.setPrice(2.00);
 		this.milk = false;
 		this.sugar = false;
 	}
@@ -37,11 +40,30 @@ public class Coffee extends Product {
 		return this.getPrice()*this.getQuantity();
 	}
 	
-	public void addOptions() {
-		
+	@Override
+	public void addOptions(Boolean setMilk, Boolean setSugar) {
+		this.setMilk(setMilk);
+		this.setSugar(setSugar);
 	}
 	
-	public void printOptions() {
+	public String printOptions() {
+		String milkStatus;
+		String sugarStatus;
+		
+		if (this.getMilk()) {
+			milkStatus = "Yes";
+		} else {
+			milkStatus = "No";
+		}
+		
+		if (this.getSugar()) {
+			sugarStatus = "Yes";
+		} else {
+			sugarStatus = "No";
+		}
+		String printOut = String.format("\t Milk: %s   Sugar: %s", milkStatus, sugarStatus);
+		return printOut;
 		
 	}
+
 }

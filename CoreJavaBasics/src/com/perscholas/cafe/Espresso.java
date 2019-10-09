@@ -6,6 +6,9 @@ public class Espresso extends Product {
 	
 	public Espresso(){
 		super();
+		this.setName("Espresso");
+		this.setDescription("An espresso");
+		this.setPrice(3.75);
 		this.extraShot = false;
 		this.macchiato = false;
 	}
@@ -45,15 +48,31 @@ public class Espresso extends Product {
 	}
 
 	@Override
-	public void addOptions() {
+	public void addOptions(Boolean addShot, Boolean addMacc) {
 		// TODO Auto-generated method stub
-		
+		this.setExtraShot(addShot);
+		this.setMacchiato(addMacc);
 	}
 
 	@Override
-	public void printOptions() {
-		// TODO Auto-generated method stub
+	public String printOptions() {
+		String shotStatus;
+		String maccStatus;
 		
+		if (this.getExtraShot()) {
+			shotStatus = "Yes (Add $2)";
+		} else {
+			shotStatus = "No";
+		}
+		
+		if (this.getMacchiato()) {
+			maccStatus = "Yes (Add $1)";
+		} else {
+			maccStatus = "No";
+		}
+
+		String printOut = String.format("Extra Shot %s   Macchiato: %s",shotStatus, maccStatus);
+		return printOut;
 	}
 
 }

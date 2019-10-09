@@ -72,15 +72,20 @@ public class JavaOOPClass {
 //	Purchase Total: 17.50
 
 	
-//	Java I/O
-//	Software Developer Club
-//	This next exercise requires a printout of a list of members of a software developer club by reading a text file and printing out the details. The text file is provided and can be downloaded through this link: members.txtPreview the document. Create three classes: ClubMember, SoftwareDeveloperClub, and ClubMemberApp. The ClubMemberApp class will drive the application. Write code in the SoftwareDeveloperClub constructor to read the text file and create an ArrayList of ClubMember objects. The output should include member name, city, state and favorite language such as this:
-//	Member Name: Joan
-//	Location: New York, NY
-//	Favorite Language: JavaScript
+// Java I/O
+// Software Developer Club
 	
-//	Now we will enhance the Software Developer Club application to provide a menu which will give the user the option to display the club members, add a member or remove a member from the ArrayList created by the SoftwareDeveloperClub constructor. The function to display the members should produce output similar to the list in the preceding exercise (use the same text file: members.txtPreview the document). The menu should look similar to the following:
-//	Select from the following menu:
+// This next exercise requires a printout of a list of members of a software developer club by reading a text file and printing out the details. The text file is provided and can be downloaded through this link: members.txtPreview the document. Create three classes: ClubMember, SoftwareDeveloperClub, and ClubMemberApp. 
+	
+
+// The ClubMemberApp class will drive the application. Write code in the SoftwareDeveloperClub constructor to read the text file and create an ArrayList of ClubMember objects. The output should include member name, city, state and favorite language such as this:
+
+// Member Name: Joan
+// Location: New York, NY
+// Favorite Language: JavaScript	
+
+// Now we will enhance the Software Developer Club application to provide a menu which will give the user the option to display the club members, add a member or remove a member from the ArrayList created by the SoftwareDeveloperClub constructor. The function to display the members should produce output similar to the list in the preceding exercise (use the same text file: members.txtPreview the document). The menu should look similar to the following:
+// Select from the following menu:
 //	1: Display Members
 //	2: Remove Member
 //	3: Add Member

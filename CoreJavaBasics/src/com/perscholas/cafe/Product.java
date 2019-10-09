@@ -48,9 +48,9 @@ public abstract class Product {
 	
 	public abstract double calculateProductTotal();
 	
-	public abstract void addOptions();
+	public abstract void addOptions(Boolean option1, Boolean option2);
 	
-	public abstract void printOptions();
+	public abstract String printOptions();
 	
 	
 	

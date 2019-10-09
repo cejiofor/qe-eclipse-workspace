@@ -6,6 +6,9 @@ public class Cappuccino extends Product {
 	
 	public Cappuccino() {
 		super();
+		this.setName("Cappuccino");
+		this.setDescription("A cappuccino");
+		this.setPrice(2.75);
 		this.peppermint = false;
 		this.whippedCream = false;
 	}
@@ -46,15 +49,31 @@ public class Cappuccino extends Product {
 	}
 
 	@Override
-	public void addOptions() {
+	public void addOptions(Boolean addPep, Boolean addWhip) {
 		// TODO Auto-generated method stub
-		
+		this.setPeppermint(addPep);
+		this.setWhippedCream(addWhip);
 	}
 
 	@Override
-	public void printOptions() {
-		// TODO Auto-generated method stub
+	public String printOptions() {
+		String pepStatus;
+		String whipStatus;
 		
+		if (this.getPeppermint()) {
+			pepStatus = "Yes (Add $2)";
+		} else {
+			pepStatus = "No";
+		}
+		
+		if (this.getWhippedCream()) {
+			whipStatus = "Yes (Add $1)";
+		} else {
+			whipStatus = "No";
+		}
+
+		String printOut = String.format("Peppermint: %s   Whipped Cream: %s",pepStatus, whipStatus);
+		return printOut;
 	}
 
 }

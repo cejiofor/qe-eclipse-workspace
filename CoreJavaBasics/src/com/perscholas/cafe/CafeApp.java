@@ -1,45 +1,66 @@
 package com.perscholas.cafe;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class CafeApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub'
-		// 
-		
-		List<Product> cart = new ArrayList<Product>();
+		ShoppingCart cart = new ShoppingCart();
 		Scanner sc = new Scanner(System.in);
-		String storeMenu = "Select an Item from the menu";
-		String menu = "1 - Coffee\n2 - Espresso\n3- Cappuccino\n4 - Checkout";
+		String storeMenu = "Select an item from the menu";
+		String menu = "1 - Coffee\n2 - Espresso\n3 - Cappuccino\n4 - Checkout";
 		System.out.println(storeMenu);
 		System.out.println(menu);
 		int item = sc.nextInt();
-		
-		switch (item) {
-			case 1:z
-				Coffee newCup = new Coffee("Coffee", 3.25,"A cup of coffee",true, false);
-				newCup.setQuantity(3);
-				cart.add(newCup);
-				System.out.println(cart);
-				String itemInfo = String.format("Item: %s, Description: %s. Quantity: %d, Subtotal %.2f", newCup.getName(), newCup.getDescription(), newCup.getQuantity(), newCup.calculateProductTotal());
-				System.out.println(itemInfo);
-			case 2:
-				Espresso newEsp = new Espresso();
-				cart.add(newEsp);
-			case 3:
-				Cappuccino newCap = new Cappuccino();
-				cart.add(newCap);
-			case 4:
-				
-				
-		}
+		int cupQuantity;
+		while (item != 4) {
+			switch (item) {
+				case 1:
+					Coffee cupCoffee = new Coffee();
 			
+					System.out.println("Would you like milk? Select 1 for Yes, 2 for No");
+					Boolean milk = (sc.nextInt() == 1);
+					System.out.println("Would you like sugar? Select 1 for Yes, 2 for No");
+					Boolean sugar = (sc.nextInt() == 1);;
+					
+					System.out.println("How many would you like?");
+					cupQuantity = sc.nextInt();
+					
+					cart.addItem(cupCoffee,cupQuantity, milk, sugar);
+					System.out.println(cart.printItemSummary(cupCoffee));
+					break;
+				case 2:
+					Espresso cupEspresso = new Espresso();
+					System.out.println("Would you like an extra shot? Select 1 for Yes, 2 for No");
+					Boolean shot = (sc.nextInt() == 1);
+					System.out.println("Would you like a macciato? Select 1 for Yes, 2 for No");
+					Boolean macc = (sc.nextInt() == 1);;
+					
+					System.out.println("How many would you like?");
+					cupQuantity = sc.nextInt();
+					
+					cart.addItem(cupEspresso, cupQuantity, shot, macc);
+					System.out.println(cart.printItemSummary(cupEspresso));
+					break;
+				case 3:
+					Cappuccino cupCappuccino = new Cappuccino();
+					System.out.println("Would you like an peppermint? Select 1 for Yes, 2 for No");
+					Boolean pep = (sc.nextInt() == 1);
+					System.out.println("Would you like a whipped cream? Select 1 for Yes, 2 for No");
+					Boolean whip = (sc.nextInt() == 1);;
+					
+					System.out.println("How many would you like?");
+					cupQuantity = sc.nextInt();
+					
+					cart.addItem(cupCappuccino, cupQuantity, pep, whip);
+					System.out.println(cart.printItemSummary(cupCappuccino));
+			}
+			System.out.println(menu);
+			item = sc.nextInt();	
+		} 
 		
-//		String output = String.format(format, args);
-		System.out.println("Item Quantity, ubtotal, total");
+		cart.checkOut();
+		sc.close();
 		
 	}
 
