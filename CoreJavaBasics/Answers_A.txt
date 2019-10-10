@@ -1,5 +1,0 @@
-Name: A
-Q1 Answer: C
-Q2 Answer: D
-Q3 Answer: C
-Q4 Answer: D

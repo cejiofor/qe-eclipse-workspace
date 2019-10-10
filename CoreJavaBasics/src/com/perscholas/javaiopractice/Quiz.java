@@ -11,22 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Quiz {
-	public static String validateAnswer(String ans, Scanner input) {
-		String ansRegex = "A|B|C|D";
-		Pattern ansPattern = Pattern.compile(ansRegex);
-		Matcher match = ansPattern.matcher(ans);
-		while(!match.find()) {
-			System.out.println("Invalid Reponse!");
-			ans = input.next();
-			match = ansPattern.matcher(ans);
-		}
-		return ans;
-	}
-	
 	public static void runQuiz() throws IOException {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter Your Name:");
-		String name = input.nextLine();
+		Scanner userInput = new Scanner(System.in);
+		System.out.print("Enter Your Name: ");
+		String name = userInput.nextLine();
 		File inputFile = new File("quiz.txt");
 		String fileName = String.format("Answers_%s.txt", name);
 		File outputFile = new File(fileName);
@@ -38,6 +26,8 @@ public class Quiz {
 		String newLineRegex =  "^\\s*$";
 		Pattern newLinePattern = Pattern.compile(newLineRegex);
 		
+		String ansRegex = "A|B|C|D";
+		Pattern ansPattern = Pattern.compile(ansRegex);
 		String answer = null;
 		
 		try
@@ -54,12 +44,22 @@ public class Quiz {
 			while (line != null) {
 				Matcher matcher = newLinePattern.matcher(line);
 				if (matcher.find()){
-					System.out.println("Enter your answer: ");
-					String testAns = input.nextLine();
-					answer = validateAnswer(testAns, input);
-					System.out.println("Q"+questNum+" Answer: "+answer);
+					System.out.print("Enter your answer: ");
+					answer = userInput.next();
+					
+					
+					Matcher ansMatch = ansPattern.matcher(answer);
+					while(!ansMatch.find()) {
+						System.out.println("Invalid Reponse! Must be A, B, C, or D");
+						System.out.print("Enter your answer: ");
+						answer = userInput.next();
+						ansMatch = ansPattern.matcher(answer);
+					}
+					
+					System.out.println("Q"+questNum+" Answer: "+answer+"\n");
 					bw.write("Q"+questNum+" Answer: "+answer+"\n");
 					questNum++;
+					
 					
 				}
 				else {

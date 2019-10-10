@@ -72,7 +72,7 @@ public class Cappuccino extends Product {
 			whipStatus = "No";
 		}
 
-		String printOut = String.format("Peppermint: %s   Whipped Cream: %s",pepStatus, whipStatus);
+		String printOut = String.format("\tPeppermint: %s   Whipped Cream: %s",pepStatus, whipStatus);
 		return printOut;
 	}
 

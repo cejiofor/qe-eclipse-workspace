@@ -61,7 +61,7 @@ public class Coffee extends Product {
 		} else {
 			sugarStatus = "No";
 		}
-		String printOut = String.format("\t Milk: %s   Sugar: %s", milkStatus, sugarStatus);
+		String printOut = String.format("\tMilk: %s   Sugar: %s", milkStatus, sugarStatus);
 		return printOut;
 		
 	}

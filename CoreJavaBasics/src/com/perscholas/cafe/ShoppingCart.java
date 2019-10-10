@@ -51,7 +51,7 @@ public class ShoppingCart {
 	
 	public String printItemSummary(Product item) {
 		StringBuilder itemSummary = new StringBuilder();
-		itemSummary.append(String.format("Item: %s, \tQuantity: %d, Subtotal %.2f", item.getName(), item.getQuantity(), item.calculateProductTotal()));
+		itemSummary.append(String.format("Item: %s, Quantity: %d, Subtotal %.2f", item.getName(), item.getQuantity(), item.calculateProductTotal()));
 		itemSummary.append(System.lineSeparator());
 		itemSummary.append(item.printOptions());
 		return itemSummary.toString();

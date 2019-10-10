@@ -1,5 +1,0 @@
-Name: bob
-Q1 Answer: A
-Q2 Answer: A
-Q3 Answer: A
-Q4 Answer: A

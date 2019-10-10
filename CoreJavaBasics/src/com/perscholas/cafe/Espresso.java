@@ -71,7 +71,7 @@ public class Espresso extends Product {
 			maccStatus = "No";
 		}
 
-		String printOut = String.format("Extra Shot %s   Macchiato: %s",shotStatus, maccStatus);
+		String printOut = String.format("\tExtra Shot %s   Macchiato: %s",shotStatus, maccStatus);
 		return printOut;
 	}
 
