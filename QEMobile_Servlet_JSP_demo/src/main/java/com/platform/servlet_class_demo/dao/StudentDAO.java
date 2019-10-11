@@ -1,6 +1,6 @@
 package com.platform.servlet_class_demo.dao;
 
-import java.awt.List;
+import java.util.List;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +26,8 @@ public class StudentDAO {
 		
 	}
 	
-	public void createStudent(String name, String email, String course) throws SQLException, ClassNotFoundException, IOException {
+	/* Insert method, taking student construtor args to creaate student, add to table, and retrun arraylist of students
+	 * public void createStudent(String name, String email, String course) throws SQLException, ClassNotFoundException, IOException {
 		ArrayList<Student> studentList = new ArrayList<>();
 		
 		// Create a new instance of the student class
@@ -91,7 +92,7 @@ public class StudentDAO {
 			e.printStackTrace();
 		} 
 		
-	}
+	} */
 	
 	// CREATE -> REGISTER USER, RETURN USER ID FOR NEW USER
 	public Integer createStudent(Student student) throws SQLException, ClassNotFoundException, IOException {		
@@ -102,13 +103,12 @@ public class StudentDAO {
 		Connection sqlConnect = null;
 		PreparedStatement insertStmt = null;
 //		String studentQuery = null;
-//		Statement newQuery = null;
 		ResultSet results = null;
 		
 		// SQL query to be run to add student data to SQL table
 		String insertString = "INSERT INTO students (name, email, course_selected) values (?, ?, ?)";
 		
-		//Variables needed to retrieve primary key from table
+		//Variables needed to retrieve new student primary key from table
 		int ID = -1;
 		String[] COL = {"student_id"};
 				
@@ -124,7 +124,7 @@ public class StudentDAO {
 			insertStmt.setString(2, student.getEmail());
 			insertStmt.setString(3, student.getCourseSelected());
 			
-			
+
 			// run the sql query
 			insertStmt.executeUpdate();
 			
@@ -213,12 +213,57 @@ public class StudentDAO {
 		return studentList;
 	}
 
-	// UPDATE -> UPDATE STUDENT PROPERTIES
+	// UPDATE -> UPDATE STUDENT PROPERTIES FOR GIVEN STUDENT
 	public Boolean updateStudent(Student student) throws SQLException, ClassNotFoundException, IOException {
-		
+			// Declare variables
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			Integer updateResult = null;
+			
+			// Assign update string to variable
+			String updateString = "UPDATE students "
+					+ "set name = ?, email = ? course = ?"
+					+ "where student_id = ?";
+			
+			// Create MySqlConnection class instance
+			MariaDBConnection mariaDB = new MariaDBConnection();
+			
+			// Begin try/catch block to query the database
+			try
+			{
+				// Connect to database and assign query string to PreparedStatement object
+				conn = mariaDB.getConnection();
+				stmt = conn.prepareStatement(updateString);
+				
+				// Set query parameters (?)
+				stmt.setString(1, student.getName());
+				stmt.setString(2, student.getEmail());
+				stmt.setString(3, student.getCourseSelected());
+				stmt.setInt(4, student.getStudentId());
+				
+				// Run query and assign to ResultSet
+				updateResult = stmt.executeUpdate();
+			}
+			catch (ClassNotFoundException | SQLException e)
+			{
+				System.out.println("Error: " + e.getMessage());
+			}
+			finally
+			{
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			}
+			if (updateResult > 0) {
+				return true;
+			}
+			return false;
 	}
 	
-	// DELETE -> REMOVE STUDENT FROM DATA BASE
+	// DELETE -> REMOVE STUDENT FROM DATA BASE BY STUDENT ID
 	public Boolean deleteStudent(int studentID) throws SQLException, ClassNotFoundException, IOException {
 		// Create an instance of the mariaDB connection
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -267,49 +312,28 @@ public class StudentDAO {
 		return true;
 	}
 		
-	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
-		ArrayList<Student> studentList = new ArrayList<Student>();
-		
-		// Create ArrayList to hold values for student properties
-		ArrayList<Integer> studentId = new ArrayList<Integer>();
-		ArrayList<String> name = new ArrayList<String>();
-		ArrayList<String> email = new ArrayList<String>();
-		ArrayList<String> courseSelected = new ArrayList<String>();
-		
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {	
 		StudentDAO s_dao = new StudentDAO();
 		s_dao.testConnection();
 		
-		// Create an instance of the mariaDB connection
-		MariaDBConnection mariaDB = new MariaDBConnection();
+		/* Add Students to the table */
+//		Student studentOne = new Student("Derrick", "derrick@school..com", "Physics");
+//		Student studentTwo = new Student("Mimi", "mimi@school.com", "CompSci");
+//		Student studentThree = new Student("Chris", "chris@school.com", "Data Structures");
+//
+//		studentOne.setStudentId(s_dao.createStudent(studentOne));
+//		studentTwo.setStudentId(s_dao.createStudent(studentTwo));
+//		studentThree.setStudentId(s_dao.createStudent(studentThree));
 		
-		// Create a connection to the mariaDB database
-		Connection sqlConnect = mariaDB.getConnection();
+//		List<Student> allStudents = s_dao.getStudents();
+//		for (Student student: allStudents) {
+//			System.out.println(student.toString());
+//		}
 		
-		// SQL query to be run to receive data from SQL table
-		String sqlQuery = "SELECT * FROM Students";
+//		s_dao.deleteStudent(1);
+//		s_dao.getStudents();
 		
-		// Statement needed to run the sql query
-		Statement newQuery = sqlConnect.createStatement();
-		
-		// run the sql query and return the results to a ResultSet variable
-		ResultSet results = newQuery.executeQuery(sqlQuery);
-		
-		// iterate through the java result set and set student properties from ArrayList properties
-		while (results.next())
-		{
-			Student student = new Student();
-			student.setStudentId(results.getInt("student_id"));
-			student.setName(results.getString("name"));
-			student.setEmail(results.getString("email"));
-			student.setCourseSelected(results.getString("course_selected"));
-			studentList.add(student);
-			System.out.println(student.toString());
-		}
-		sqlConnect.close();
-		
-		s_dao.createStudent("Test", "test@test.com", "Test Course");
-		
-		return;	
+
 	}
  
 }
