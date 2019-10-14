@@ -1,0 +1,10 @@
+Name: Billy, Score: 89.0
+Name: Bob, Score: 69.0
+Name: Chichi, Score: 50.0
+Name: Mimi, Score: 78.0
+Name: Kyle, Score: 80.0
+Name: Sarah, Score: 69.0
+Highest Score: 89.0
+Lowest Score: 50.0
+Average Score: 72.50
+
