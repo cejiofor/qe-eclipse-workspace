@@ -7,7 +7,14 @@ public class Student {
 	private String courseSelected;
 	
 	//Constructor
-	
+	public Student() {
+		
+	}
+	public Student(String name, String email, String courseSelected) {
+		this.name = name;
+		this.email = email;
+		this.courseSelected = courseSelected;
+	}
 	
 	// Getters and Setters
 	public int getStudentId() {
