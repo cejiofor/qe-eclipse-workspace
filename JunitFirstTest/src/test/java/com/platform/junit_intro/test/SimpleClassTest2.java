@@ -41,6 +41,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.platform.junit_into.SimpleClass;
+import com.platform.junit_into.SimpleObject;
 
 public class SimpleClassTest2{
 	private static SimpleClass simpleClass;
