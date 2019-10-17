@@ -37,9 +37,9 @@ public class BasisMathTest {
 	
 	@Test
 	public void multiplyTest() {
-		int a = 4;
-		int b = 2;
-		int actual = bm.multiply(a, b);
+		double a = 4;
+		double b = 2;
+		double actual = bm.multiply(a, b);
 		assertNotNull(actual);
 	}
 	
