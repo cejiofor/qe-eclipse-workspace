@@ -1,0 +1,7 @@
+Cappuccino,4.99
+Biscuit,5.99
+Eggs,1.99
+Phone,699.99
+Latop,1299.99
+Smart Television,299.99
+Tablet,599.99
