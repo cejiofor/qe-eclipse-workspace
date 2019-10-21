@@ -1,6 +1,8 @@
 package com.perscholas.junit.dao.test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
 import static org.junit.Assume.assumeTrue;
 
@@ -35,7 +37,7 @@ public class ProductDAOTest {
 	private Product product;
 	
 	@BeforeClass
-	public void testDatabaseConnection() throws SQLException{
+	public static void testDatabaseConnection() throws SQLException{
 		try {
 			mariaDB = new MariaDBConnection();
 			conn = mariaDB.getConnection();
@@ -60,16 +62,17 @@ public class ProductDAOTest {
 	}
 	
 	@AfterClass
-	public void cleanUp() throws SQLException {
+	public static void cleanUp() throws SQLException {
 		conn.close();
 	}
 
 	
 	@Test
-	public void getProductsTest() {
+	public void getProductsTest() throws SQLException {
 		// Check to see if returns a list
 		// check list to see if it has some name
-		
+		List<Product> actual = p_dao.getProducts();
+		assertThat(actual, is(product instanceof Product));
 	}
 	
 	@Test
