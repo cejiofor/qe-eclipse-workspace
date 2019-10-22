@@ -21,7 +21,8 @@ public class SeleniumBasicTest {
 		 * we are using the Chrome WebDriver and then providing the path to the 
      		 * location of the WebDriver file on the device used to create this project. 
                  * Also note that the filename must include .exe on Windows computers */
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\dev\\chromedriver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/FirstSeleniumProject/");
 	}
@@ -29,6 +30,21 @@ public class SeleniumBasicTest {
 	public static void shutDown() {
 		driver.close();
 	}
+	
+	
+	@Test 
+	public void test() {
+		WebElement we = driver.findElement(By.cssSelector('#main > div>div>div');
+		String actual = we.getText();
+		assertThat();
+	}
+	
+	@Test
+	public void testAboutLink() {
+		WebElement aboutLink = driver.findElement(By.cssSelector("#header > nav.subNav.navbar.navbar-default.affix-top > div > div.hidden-xs > ul > li:nth-child(1) > a"));
+		aboutLink.click();
+	}
+	
 	@Test
 	public void testTitle() {
 		/* The WebDriver interface includes a method for obtaining the title of a 

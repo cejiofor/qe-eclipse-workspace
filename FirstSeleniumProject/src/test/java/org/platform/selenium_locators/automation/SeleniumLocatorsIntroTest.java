@@ -24,9 +24,11 @@ public class SeleniumLocatorsIntroTest {
 	private static WebDriver driver;
 	@BeforeClass
 	public static void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\dev\\chromedriver\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/selenium_locators/SeleniumLocators.jsp");
+		driver.get("http://localhost:8080/FirstSeleniumProject/SeleniumLocators.jsp");
+		
 	}
 	@AfterClass
 	public static void shutDown() {
