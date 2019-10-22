@@ -1,0 +1,6 @@
+
+
+
+Bonus:
+Modify the test for AddVaryingTypeCalculator to allow for varying number of added items (i.e., more than two added numbers).
+Write a method that converts LocalDateTime to Timestamp and the reverse.
