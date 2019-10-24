@@ -18,7 +18,7 @@ public class HomeServlet extends HttpServlet {
 				"<!DOCTYPE html/>"
 				+ "<html>"
 				+ "<head><title>Hello Selenium</title></head>"
-				+ "<body><h1>Hello Selenium!</h1></body>"
+				+ "<body><h1>Hello Selebnium!</h1></body>"
 				+ "</html>");
 	}
 }
