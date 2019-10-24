@@ -32,12 +32,12 @@ public class SeleniumBasicTest {
 	}
 	
 	
-	@Test 
-	public void test() {
-		WebElement we = driver.findElement(By.cssSelector('#main > div>div>div');
-		String actual = we.getText();
-		assertThat();
-	}
+//	@Test 
+//	public void test() {
+//		WebElement we = driver.findElement(By.cssSelector('#main > div>div>div');
+//		String actual = we.getText();
+//		assertThat();
+//	}
 	
 	@Test
 	public void testAboutLink() {
