@@ -38,7 +38,11 @@ public class SeleniumBasicTest {
 //		String actual = we.getText();
 //		assertThat();
 //	}
+<<<<<<< Updated upstream
 	
+=======
+//	
+>>>>>>> Stashed changes
 	@Test
 	public void testAboutLink() {
 		WebElement aboutLink = driver.findElement(By.cssSelector("#header > nav.subNav.navbar.navbar-default.affix-top > div > div.hidden-xs > ul > li:nth-child(1) > a"));
