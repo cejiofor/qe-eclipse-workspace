@@ -2,6 +2,7 @@ package org.platform.selenium_basic_test.automation;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -13,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SeleniumBasicTest {
 	private static WebDriver driver;
+	
 	@BeforeClass
 	public static void setUp() {
 		/* The System.setProperty() method accepts two strings as arguments. Be sure 
@@ -24,13 +26,49 @@ public class SeleniumBasicTest {
 //		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Student\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", "C:\\dev\\chromedriver\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/FirstSeleniumProject/");
+		driver.get("http://localhost:8080/FirstSeleniumProject/BasicServlet");
 	}
+	
 	@AfterClass
 	public static void shutDown() {
 		driver.close();
 	}
 	
+	@Test
+	public void testHello() {
+		WebElement we = driver.findElement(By.cssSelector("h1"));
+		String actual = we.getText();
+		assertTrue(actual.equals("Hello Per Scholas!"));
+	}
+//	@Test
+//	public void testAboutLink() {
+//		WebElement aboutLink = driver.findElement(By.cssSelector("#header > nav.subNav.navbar.navbar-default.affix-top > div > div.hidden-xs > ul > li:nth-child(1) > a"));
+//		aboutLink.click();
+//	}
+	
+//	@Test
+//	public void testTitle() {
+//		/* The WebDriver interface includes a method for obtaining the title of a 
+//		 * web page. In the following test we will assert that the title of the 
+//		 * web page equals to an expected value. If this turns out to be true, 
+//		 * then the test passes. */
+//		String actual = driver.getTitle();
+//		String expected = "Hello Selenium";
+//		assertThat(actual, equalTo(expected));
+//	}
+	
+//	@Test
+//	public void testMessage() {
+//		/* The WebDriver interface also has methods to find elements on the web 
+//		 * page. In the following example we will locate the element by it's CSS 
+//		 * selector. The various ways of locating elements will be discussed 
+//		 * further in subsequent lessons. */
+//		WebElement message = driver.findElement(By.cssSelector("h1"));
+//		// Now we will obtain the text inside the tag with the "getText()" method.
+//		String actual = message.getText();
+//		String expected = "Hello Selenium!";
+//		assertThat(actual, equalTo(expected));
+//	}
 	
 //	@Test 
 //	public void test() {
@@ -39,32 +77,4 @@ public class SeleniumBasicTest {
 //		assertThat();
 //	}
 
-	@Test
-	public void testAboutLink() {
-		WebElement aboutLink = driver.findElement(By.cssSelector("#header > nav.subNav.navbar.navbar-default.affix-top > div > div.hidden-xs > ul > li:nth-child(1) > a"));
-		aboutLink.click();
-	}
-	
-	@Test
-	public void testTitle() {
-		/* The WebDriver interface includes a method for obtaining the title of a 
-		 * web page. In the following test we will assert that the title of the 
-		 * web page equals to an expected value. If this turns out to be true, 
-		 * then the test passes. */
-		String actual = driver.getTitle();
-		String expected = "Hello Selenium";
-		assertThat(actual, equalTo(expected));
-	}
-	@Test
-	public void testMessage() {
-		/* The WebDriver interface also has methods to find elements on the web 
-		 * page. In the following example we will locate the element by it's CSS 
-		 * selector. The various ways of locating elements will be discussed 
-		 * further in subsequent lessons. */
-		WebElement message = driver.findElement(By.cssSelector("h1"));
-		// Now we will obtain the text inside the tag with the "getText()" method.
-		String actual = message.getText();
-		String expected = "Hello Selenium!";
-		assertThat(actual, equalTo(expected));
-	}
 }

@@ -14,16 +14,38 @@ public class Volunteer extends User {
 		super();
 	}
 	
-	public Volunteer(String volunteerName, String email, String address) {
+	public Volunteer(int volunteerID, String volunteerName, String email, String address) {
 		super();
-		this.volunteerID = this.getUserID();
+		this.volunteerID = volunteerID;
 		this.volunteerName = volunteerName;
 		this.email = email;
 		this.address = address;
-		this.skills = new ArrayList<Skill>();
-		
+		this.skills = new ArrayList<Skill>();	
 	}
-
+	
+	public Volunteer(User user, String volunteerName, String email, String address) {
+		this.setUserID(user.getUserID());
+		this.setUserName(user.getUserName());
+		this.setPassword(user.getPassword());
+		this.setPrimeContact(user.getPrimeContact());
+		this.volunteerID = user.getUserID();
+		this.volunteerName = volunteerName;
+		this.email = email;
+		this.address = address;
+		this.skills = new ArrayList<Skill>();	
+	}
+	
+	
+//	@Override
+//	public int getUserID() {
+//		return userID;
+//	}
+//	
+//	@Override
+//	public void setUserID(int userID) {
+//		this.userID = userID;
+//	}
+	
 	public int getVolunteerID() {
 		return volunteerID;
 	}
@@ -62,6 +84,12 @@ public class Volunteer extends User {
 
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
+	}
+
+	@Override
+	public String toString() {
+		return "Volunteer [volunteerID=" + volunteerID + ", volunteerName=" + volunteerName + ", email=" + email
+				+ ", address=" + address + ", skills=" + skills + ", toString()=" + super.toString() + "]";
 	}
 	
 	

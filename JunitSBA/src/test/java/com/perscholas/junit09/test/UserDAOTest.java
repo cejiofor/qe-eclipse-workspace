@@ -34,7 +34,7 @@ import com.perscholas.junit09.UserDAO;
 //Use the “assumeThat” method in each of the test methods to confirm that the database is connected. 
 //
 //You will need to insert some records for some of the operations and then delete any test data after the test is completed. 
-//Use at least 4 different JUnit assert Satements and 5 different Hamcrest matchers.
+//Use at least 4 different JUnit assert Statements and 5 different Hamcrest matchers.
 
 
 public class UserDAOTest {

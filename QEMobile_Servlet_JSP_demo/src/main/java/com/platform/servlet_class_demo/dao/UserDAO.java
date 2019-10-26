@@ -4,9 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.sql.*;
+
 import com.platform.servlet_class_demo.models.User;
 
 public class UserDAO {
+	public void testConnection() {
+		MariaDBConnection mariadbConnection = new MariaDBConnection();
+		try {
+			mariadbConnection.getConnection();
+			System.out.println("Connected to MariaDB!");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection failed.");
+		}
+		
+	}
+	
 	public List<User> getAllUsers() throws SQLException {
 		// Declare variables
 		Connection conn = null;
@@ -314,8 +327,8 @@ public class UserDAO {
 	} // End of removeUser() method
 			
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		UserDAO s_dao = new UserDAO();
+		s_dao.testConnection();
 	}
 
 }

@@ -7,6 +7,9 @@
 <title>Index</title>
 </head>
 <body>
-	<h1>Hello Per Scholas! ISO-8859-1</h1>
+	<h1>Hello Per Scholas!</h1>
+	<p>This is a paragraph</p>
+	<a href="https://perscholas.org">Per Scholas</a>
+	<p>John Doe</p>
 </body>
 </html>

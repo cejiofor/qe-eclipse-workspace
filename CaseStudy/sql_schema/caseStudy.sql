@@ -1,4 +1,5 @@
 SET foreign_key_checks = 0;
+
 /* TODO
 Add FLags to incidcate primary contact for organization
 Add fals to users table for org or volunteer (TRUE FALSE?)
@@ -6,22 +7,33 @@ Add fals to users table for org or volunteer (TRUE FALSE?)
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-	user_id INT PRIMARY KEY NOT NULL,
+	user_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	username VARCHAR(20),
-	password VARCHAR(20)
+	password VARCHAR(20),
+	prime_contact BOOL
 );
+
+
+INSERT INTO users (username, password, prime_contact) VALUES("cejiofor", "password", false);
+INSERT INTO users (username, password, prime_contact) VALUES("bobdylan", "password", false);
+INSERT INTO users (username, password, prime_contact) VALUES("coolKid99", "password", false);
 
 
 DROP TABLE IF EXISTS volunteers;
 CREATE TABLE volunteers (
-	volunteer_id VARCHAR(100) PRIMARY KEY NOT NULL,
+	volunteer_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	user_id int NOT NULL,
 	volunteer_name VARCHAR(100),
 	email VARCHAR(100),
 	address VARCHAR(100),
-	user_id INT NOT NULL, 
-	CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id)
-
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+	-- CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(1, "Chris Ejiofor", "cejiofor@gmail.com", "123 Fake Street, Dallas, TX USA");
+INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(2, "Bob Dylan", "bdylan@gmail.com", "123 Fake Road, Plano, TX USA");
+INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(3, "Steve Jobs", "sjobs@gmail.com", "123 Fake Street, Fort Worth, TX USA");
+
 
 DROP TABLE IF EXISTS orgs;
 CREATE TABLE orgs (

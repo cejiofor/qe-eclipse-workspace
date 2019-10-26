@@ -19,7 +19,7 @@ public class LocatorServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LocatorServlet() {
+    public   LocatorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

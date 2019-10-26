@@ -1,25 +1,36 @@
 package com.travelcorps.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import com.travelcorps.models.Volunteer;
+import com.travelcorps.dao.MariaDBConnection;
 
 import java.io.IOException;
 import java.sql.*;
 
-import com.travelcorps.models.User;
-
-public class UserDAO {
-	public List<User> getAllUsers() throws SQLException {
+public class VolunteerDAO {
+	public void testConnection() {
+		MariaDBConnection mariadbConnection = new MariaDBConnection();
+		try {
+			mariadbConnection.getConnection();
+			System.out.println("Connected to MariaDB!");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection failed.");
+		}
+	}
+	
+	public List<Volunteer> getAllVolunteers() throws SQLException {
 		// Declare variables
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		User u = null;
-		List<User> userList = null;
+		Volunteer volunteer = null;
+		List<Volunteer> volunteerList = null;
 
 		// Assign query string to a variable
-		String qString = "select * from users";
+		String qString = "select * from volunteers";
 
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -36,20 +47,20 @@ public class UserDAO {
 		
 			// Run query and assign to the ResultSet instance
 			rs = stmt.executeQuery(qString);
-			//Create list to hold User objects
-			userList = new ArrayList<User>();
+			//Create list to hold Volunteer objects
+			volunteerList = new ArrayList<Volunteer>();
 			// Read the ResultSet instance
 			while (rs.next()) {
-				// Each iteration creates a new user
-				u = new User();
-				// Assign columns/fields to related fields in the User object
-				// 1,2 and 3 represent column numbers/positions
-				u.setUserID(rs.getInt(1));
-				u.setUserName(rs.getString(2));
-				u.setPassword(rs.getString(3));
-				u.setPrimeContact(rs.getBoolean(4));
-				// Add the user to the list
-				userList.add(u);
+				// Each iteration creates a new Volunteer
+				volunteer = new Volunteer();
+				// Assign columns/fields to related fields in the Volunteer object
+				volunteer.setVolunteerID(rs.getInt(1));
+				volunteer.setUserID(rs.getInt(2));
+				volunteer.setVolunteerName(rs.getString(3));
+				volunteer.setEmail(rs.getString(4));
+				volunteer.setAddress(rs.getString(5));
+				// Add the Volunteer to the list
+				volunteerList.add(volunteer);
 				// Repeat until rs.next() returns false (i.e., end of ResultSet)
 			}
 		}
@@ -70,17 +81,17 @@ public class UserDAO {
 				conn.close();
 			}
 		}
-		return userList;
-	} 	
+		return volunteerList;
+	}	
 	
-	public Integer registerUser(User user) throws SQLException, ClassNotFoundException, IOException {
+	public Integer registerVolunteer(Volunteer volunteer) throws SQLException, ClassNotFoundException, IOException {
 		// Declare variables
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		// Assign insert statement string to variable
-		String insertString = "insert into users (username, password, prime_contact) values (?,?,?)";
+		String insertString = "insert into volunteers (volunteer_id, user_id, volunteer_name, email, address) values (?,?,?,?,?) ";
 		
 	    int ID = -1;
 	    String[] COL = {"user_id"};
@@ -92,10 +103,12 @@ public class UserDAO {
 	        conn = mariaDB.getConnection();
 	        stmt = conn.prepareStatement(insertString, COL);
 	        
-	        stmt.setString(1, user.getUserName());
-	        stmt.setString(2, user.getPassword());
-	        stmt.setBoolean(3, user.getPrimeContact());
-	       
+	        stmt.setInt(1, volunteer.getVolunteerID());
+	        stmt.setInt(2, volunteer.getUserID());
+	        stmt.setString(3, volunteer.getVolunteerName());
+	        stmt.setString(4, volunteer.getEmail());
+	        stmt.setString(5, volunteer.getAddress());
+
 	        stmt.executeUpdate();
 	        
 	        rs = stmt.getGeneratedKeys();
@@ -124,15 +137,15 @@ public class UserDAO {
 		return ID;
 	}
 	
-	public User getUserById(int userId) throws ClassNotFoundException, IOException, SQLException {
+	public Volunteer getVolunteerById(int volunteerID) throws ClassNotFoundException, IOException, SQLException {
 		// Declare variables
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		User u = null;
+		Volunteer volunteer = null;
 		
 		// Assign query string to variable
-		String qString = "select * from users where user_id = ?";
+		String qString = "select * from volunteers where volunteer_id = ?";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -145,19 +158,19 @@ public class UserDAO {
 			stmt = conn.prepareStatement(qString);
 			
 			// Set query parameters (?)
-			stmt.setInt(1, userId); // user_id if from String parameter passed to method
+			stmt.setInt(1, volunteerID); // Volunteer_id if from String parameter passed to method
 			
 			// Run query and assign to ResultSet
 			rs = stmt.executeQuery();
 			
-			// Retrieve ResultSet and assign to new User
+			// Retrieve ResultSet and assign to new Volunteer
 			if (rs.next()) {
-				u = new User();
-				u.setUserID(rs.getInt(1));
-				u.setUserName(rs.getString(2));
-				u.setPassword(rs.getString(3));
-				u.setPrimeContact(rs.getBoolean(4));
-				
+				volunteer = new Volunteer();
+				volunteer.setVolunteerID(rs.getInt(1));
+				volunteer.setUserID(rs.getInt(2));
+				volunteer.setVolunteerName(rs.getString(3));
+				volunteer.setEmail(rs.getString(4));
+				volunteer.setAddress(rs.getString(5));
 			}
 		}
 		catch (ClassNotFoundException | IOException | SQLException e)
@@ -177,18 +190,18 @@ public class UserDAO {
 				conn.close();
 			}
 		}
-		return u;
+		return volunteer;
 	}
 	
-	public User getUserByName(String name) throws ClassNotFoundException, IOException, SQLException {
+	public Volunteer getVolunteerByName(String name) throws ClassNotFoundException, IOException, SQLException {
 		// Declare variables
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		User u = null;
+		Volunteer volunteer = null;
 		
 		// Assign query string to variable
-		String qString = "select * from users where username = ?";
+		String qString = "select * from volunteers where volunteer_name = ?";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -200,18 +213,17 @@ public class UserDAO {
 			stmt = conn.prepareStatement(qString);
 			
 			// Set query parameters (?)
-			stmt.setString(1, name); // user_id if from String parameter passed to method
-			
+			stmt.setString(1, name); // volunteer_id if from String parameter passed to method
 			// Run query and assign to ResultSet
 			rs = stmt.executeQuery();
-			
-			// Retrieve ResultSet and assign to new User
+			// Retrieve ResultSet and assign to new Volunteer
 			if (rs.next()) {
-				u = new User();
-				u.setUserID(rs.getInt(1));
-				u.setUserName(rs.getString(2));
-				u.setPassword(rs.getString(3));
-				u.setPrimeContact(rs.getBoolean(4));
+				volunteer = new Volunteer();
+				volunteer.setVolunteerID(rs.getInt(1));
+				volunteer.setUserID(rs.getInt(2));
+				volunteer.setVolunteerName(rs.getString(3));
+				volunteer.setEmail(rs.getString(4));
+				volunteer.setAddress(rs.getString(5));			
 			}
 		}
 		catch (ClassNotFoundException | IOException | SQLException e)
@@ -231,18 +243,18 @@ public class UserDAO {
 				conn.close();
 			}
 		}
-		return u;
+		return volunteer;
 	}
 	
-	public Boolean updateUser(User u) throws SQLException, ClassNotFoundException, IOException {
+	public Boolean updateVolunteer(Volunteer volunteer) throws SQLException, ClassNotFoundException, IOException {
 		// Declare variables
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Integer updateResult = null;
 		
 		// Assign update string to variable
-		String updateString = "update users "
-				+ "set username = ?, password = ?, prime_contact = ? "
+		String updateString = "update volunteers "
+				+ "set volunteer_name = ?, email = ?, address = ? "
 				+ "where user_id = ?";
 		
 		// Create MySqlConnection class instance
@@ -256,10 +268,11 @@ public class UserDAO {
 			stmt = conn.prepareStatement(updateString);
 			
 			// Set query parameters (?)
-			stmt.setString(1, u.getUserName());
-			stmt.setString(2, u.getPassword());
-			stmt.setInt(3, u.getUserID());
-			stmt.setBoolean(4, u.getPrimeContact());
+			stmt.setString(1, volunteer.getVolunteerName());
+			stmt.setString(2, volunteer.getEmail());
+	        stmt.setString(3, volunteer.getAddress());
+			stmt.setInt(4, volunteer.getVolunteerID());
+			
 			
 			// Run query and assign to ResultSet
 			updateResult = stmt.executeUpdate();
@@ -283,14 +296,14 @@ public class UserDAO {
 		return false;
 	} 
 	
-	public Boolean removeUser(int userId) throws IOException, SQLException {
+	public Boolean removeVolunteer(int volunteerID) throws IOException, SQLException {
 		// Declare variables
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Integer updateResult = null;
 		
 		// Assign delete string to variable
-		String deleteString = "delete from users where user_id = ?";
+		String deleteString = "delete from volunteers where user_id = ?";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -302,7 +315,7 @@ public class UserDAO {
 			stmt = conn.prepareStatement(deleteString);
 			
 			// Set query parameters (?)
-			stmt.setInt(1, userId);
+			stmt.setInt(1, volunteerID);
 			// Run query and assign to ResultSet
 			updateResult = stmt.executeUpdate();
 		}
@@ -332,7 +345,7 @@ public class UserDAO {
 		Integer updateResult = null;
 		
 		// Assign update string to variable
-		String updateString = "ALTER TABLE users AUTO_INCREMENT = 3";
+		String updateString = "ALTER TABLE volunteers AUTO_INCREMENT = 3";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -364,7 +377,7 @@ public class UserDAO {
 			return true;
 		}
 		return false;
-	}
+	} 
 	
 	public Boolean resetTable() throws SQLException, ClassNotFoundException, IOException {
 		// Declare variables
@@ -561,15 +574,13 @@ public class UserDAO {
 			return true;
 		}
 		return false;
-	}
+	} 	
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-		UserDAO udao = new UserDAO();
-		User newUser = new User(4, "mariah", "cell1122", false);
-		udao.registerUser(newUser);
-		
-		List<User> newList = udao.getAllUsers();
-		
-		System.out.println(Arrays.toString(newList.toArray()));
+	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+		VolunteerDAO v_dao = new VolunteerDAO();
+		v_dao.testConnection();
+		v_dao.removeVolunteer(2);
+		v_dao.removeVolunteer(1);
+		v_dao.resetTable();
 	}
 }
