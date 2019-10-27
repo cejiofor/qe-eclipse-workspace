@@ -14,9 +14,9 @@ CREATE TABLE users (
 );
 
 
-INSERT INTO users (username, password, prime_contact) VALUES("cejiofor", "password", false);
-INSERT INTO users (username, password, prime_contact) VALUES("bobdylan", "password", false);
-INSERT INTO users (username, password, prime_contact) VALUES("coolKid99", "password", false);
+INSERT INTO users (username, password, prime_contact) VALUES("cejiofor", "password", FALSE);
+INSERT INTO users (username, password, prime_contact) VALUES("bobdylan", "password", FALSE);
+INSERT INTO users (username, password, prime_contact) VALUES("sjobs", "password", FALSE);
 
 
 DROP TABLE IF EXISTS volunteers;
@@ -26,8 +26,7 @@ CREATE TABLE volunteers (
 	volunteer_name VARCHAR(100),
 	email VARCHAR(100),
 	address VARCHAR(100),
-	FOREIGN KEY (user_id) REFERENCES users(user_id)
-	-- CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(1, "Chris Ejiofor", "cejiofor@gmail.com", "123 Fake Street, Dallas, TX USA");
@@ -43,7 +42,7 @@ CREATE TABLE orgs (
 	email VARCHAR(100),
 	address VARCHAR(100),
 	user_id INT NOT NULL, 
-	CONSTRAINT `orgs_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id)	
+	CONSTRAINT `orgs_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE	
 );
 
 DROP TABLE IF EXISTS projects;
@@ -57,7 +56,7 @@ CREATE TABLE projects (
 	skill_id VARCHAR(100),
 	address VARCHAR(100),
 	org_id VARCHAR(100) NOT NULL,
-	CONSTRAINT `projectOrg_fk` FOREIGN KEY (org_id) REFERENCES orgs (org_id)
+	CONSTRAINT `projectOrg_fk` FOREIGN KEY (org_id) REFERENCES orgs (org_id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS skills;

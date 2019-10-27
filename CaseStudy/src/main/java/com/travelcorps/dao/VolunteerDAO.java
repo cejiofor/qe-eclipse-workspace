@@ -412,7 +412,7 @@ public class VolunteerDAO {
 
 
 		String varname15 = ""
-		+ "INSERT INTO users (username, password, prime_contact) VALUES(\"coolKid99\", \"password\", false);";
+		+ "INSERT INTO users (username, password, prime_contact) VALUES(\"sjobs\", \"password\", false);";
 
 
 		String varname16 = ""
@@ -427,7 +427,7 @@ public class VolunteerDAO {
 		+ "	email VARCHAR(100), "
 		+ "	address VARCHAR(100), "
 		+ "	FOREIGN KEY (user_id) REFERENCES users(user_id), "
-		+ "	CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) "
+		+ "	CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE "
 		+ ");";
 
 
@@ -455,7 +455,7 @@ public class VolunteerDAO {
 		+ "	email VARCHAR(100), "
 		+ "	address VARCHAR(100), "
 		+ "	user_id INT NOT NULL, "
-		+ "	CONSTRAINT `orgs_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) "
+		+ "	CONSTRAINT `orgs_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE "
 		+ ");";
 
 
@@ -474,7 +474,7 @@ public class VolunteerDAO {
 		+ "	skill_id VARCHAR(100), "
 		+ "	address VARCHAR(100), "
 		+ "	org_id VARCHAR(100) NOT NULL, "
-		+ "	CONSTRAINT `projectOrg_fk` FOREIGN KEY (org_id) REFERENCES orgs (org_id) "
+		+ "	CONSTRAINT `projectOrg_fk` FOREIGN KEY (org_id) REFERENCES orgs (org_id) ON DELETE CASCADE "
 		+ ");";
 
 
