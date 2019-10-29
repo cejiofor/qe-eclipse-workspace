@@ -4,24 +4,23 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HomeServlet
+ * Servlet implementation class Servlet2
  */
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/Servlet2")
+public class Servlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public Servlet2() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -30,12 +29,10 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF//views//index.jsp");
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/NewJSP.jsp");
+		request.setAttribute("setBy2", "String Attribute set by Servlet 2");
+		RequestDispatcher rd = request.getRequestDispatcher("Servlet3");
 		rd.forward(request, response);
 		
-		
-		// In the servlet “doPost” method write the code to display the input parameters to the console. You will use the request object that is passed to the doPost method to retrieve these parameters.
 	}
 
 	/**
@@ -43,11 +40,7 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		doGet(request, response);
-//		request.getContextPath();
-//		String username = request.getParameter("userName");
-//		String password = request.getParameter("password");
-//		System.out.println("Username: "+username+" Password: "+password);
+		doGet(request, response);
 	}
 
 }
