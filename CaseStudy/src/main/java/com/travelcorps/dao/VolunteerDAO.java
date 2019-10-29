@@ -2,14 +2,12 @@ package com.travelcorps.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
+import java.io.IOException;
 
 import com.travelcorps.models.Volunteer;
-import com.travelcorps.dao.MariaDBConnection;
 
-import java.io.IOException;
-import java.sql.*;
-
-public class VolunteerDAO {
+public class VolunteerDAO extends DAOClass {
 	public void testConnection() {
 		MariaDBConnection mariadbConnection = new MariaDBConnection();
 		try {
@@ -94,7 +92,7 @@ public class VolunteerDAO {
 		String insertString = "insert into volunteers (volunteer_id, user_id, volunteer_name, email, address) values (?,?,?,?,?) ";
 		
 	    int ID = -1;
-	    String[] COL = {"user_id"};
+	    String[] COL = {"volunteer_id"};
 	    
 	    MariaDBConnection mariaDB = new MariaDBConnection();
 		 
@@ -255,7 +253,7 @@ public class VolunteerDAO {
 		// Assign update string to variable
 		String updateString = "update volunteers "
 				+ "set volunteer_name = ?, email = ?, address = ? "
-				+ "where user_id = ?";
+				+ "where volunteer_id = ?";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -303,7 +301,7 @@ public class VolunteerDAO {
 		Integer updateResult = null;
 		
 		// Assign delete string to variable
-		String deleteString = "delete from volunteers where user_id = ?";
+		String deleteString = "delete from volunteers where volunteer_id = ?";
 		
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
@@ -378,7 +376,7 @@ public class VolunteerDAO {
 		}
 		return false;
 	} 
-	
+	/*
 	public Boolean resetTable() throws SQLException, ClassNotFoundException, IOException {
 		// Declare variables
 		Connection conn = null;
@@ -575,6 +573,7 @@ public class VolunteerDAO {
 		}
 		return false;
 	} 	
+	*/
 	
 	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 		VolunteerDAO v_dao = new VolunteerDAO();

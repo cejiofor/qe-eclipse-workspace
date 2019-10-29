@@ -1,6 +1,6 @@
 package com.travelcorps.dao;
 
-public class SkillDAO {
+public class SkillDAO extends DAOClass {
 
 	public SkillDAO() {
 		

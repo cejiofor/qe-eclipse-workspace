@@ -7,23 +7,23 @@ public class Organization extends User{
 	private int orgID;
 	private String orgName;
 	private String website;
+	private String mission;
 	private String email;
 	private String address;
-	private String mission;
 	private List<Project> projects;
 	
 	public Organization() {
 		super();
 	}
 	
-	public Organization(String orgName, String website, String email, String address, String mission) {
+	public Organization(String orgName, String website, String mission, String email, String address) {
 		super();
 		this.orgID = this.getUserID();
 		this.orgName = orgName;
 		this.website = website;
+		this.mission = mission;
 		this.email = email;
 		this.address = address;
-		this.mission = mission;
 		this.projects = new ArrayList<Project>();
 		
 	}
@@ -82,6 +82,12 @@ public class Organization extends User{
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	@Override
+	public String toString() {
+		return "Organization [orgID=" + orgID + ", orgName=" + orgName + ", website=" + website + ", email=" + email
+				+ ", address=" + address + ", mission=" + mission + ", projects=" + projects + "]";
 	}
 	
 	

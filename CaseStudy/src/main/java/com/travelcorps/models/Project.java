@@ -1,31 +1,43 @@
 package com.travelcorps.models;
 
 import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Project {
 	private int projectID;
-	private String orgID;
+	private String projectName;
 	private String city;
 	private String country;
 	private Date startDate;
 	private Date endDate;
+	private int orgID;
 	private List<Skill> skills;
 
 	public Project() {
 	}
 	
-	public Project(int projectID, String orgID, String city, String country, Date startDate, Date endDate, List<Skill> skills) {
+	public Project(int projectID, String projectName, String city, String country, Date startDate, Date endDate, int orgID) {
 		this.projectID = projectID;
-		this.orgID = orgID;
+		this.projectName = projectName;
 		this.city = city;
 		this.country = country;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.skills = skills;
+		this.orgID = orgID;
 		 
 	}
-
+	
+	public java.sql.Date getSqlDate(Date utilDate) {
+		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		return sqlDate;
+	}
+	
+	public java.util.Date getUtilDate(java.sql.Date sqlDate){
+		java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+		return utilDate;
+	}
+	
 	public int getProjectID() {
 		return projectID;
 	}
@@ -34,12 +46,12 @@ public class Project {
 		this.projectID = projectID;
 	}
 
-	public String getOrgID() {
-		return orgID;
+	public String getProjectName() {
+		return projectName;
 	}
 
-	public void setOrgID(String orgID) {
-		this.orgID = orgID;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public String getCity() {
@@ -72,6 +84,14 @@ public class Project {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public int getOrgID() {
+		return orgID;
+	}
+
+	public void setOrgID(int orgID) {
+		this.orgID = orgID;
 	}
 
 	public List<Skill> getSkills() {

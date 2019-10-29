@@ -3,13 +3,12 @@ package com.travelcorps.dao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import java.io.IOException;
 import java.sql.*;
+import java.io.IOException;
 
 import com.travelcorps.models.User;
 
-public class UserDAO {
+public class UserDAO extends DAOClass {
 	public List<User> getAllUsers() throws SQLException {
 		// Declare variables
 		Connection conn = null;
@@ -291,8 +290,7 @@ public class UserDAO {
 		
 		// Assign delete string to variable
 		String deleteString = "delete from users where user_id = ?";
-//		String deleteString = "delete from users where user_id = ?";
-		
+
 		// Create MySqlConnection class instance
 		MariaDBConnection mariaDB = new MariaDBConnection();
 		// Begin try/catch block to query the database
@@ -347,203 +345,6 @@ public class UserDAO {
 
 			// Run query and assign to ResultSet
 			updateResult = stmt.executeUpdate(updateString);
-		}
-		catch (ClassNotFoundException | SQLException e)
-		{
-			System.out.println("Error: " + e.getMessage());
-		}
-		finally
-		{
-			if (stmt != null) {
-				stmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		}
-		if (updateResult > 0) {
-			return true;
-		}
-		return false;
-	}
-	
-	public Boolean resetTable() throws SQLException, ClassNotFoundException, IOException {
-		// Declare variables
-		Connection conn = null;
-		Statement stmt = null;
-		Integer updateResult = null;
-		
-		
-		// Create strings that will come together to reset table as sql query
-		String varname1 = ""
-				+ "SET foreign_key_checks = 0;";
-
-		String varname11 = ""
-		+ "DROP TABLE IF EXISTS users;";
-
-
-		String varname12 = ""
-		+ "CREATE TABLE users ( "
-		+ "	user_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, "
-		+ "	username VARCHAR(20), "
-		+ "	password VARCHAR(20), "
-		+ "	prime_contact BOOL "
-		+ ");";
-
-
-		String varname13 = ""
-		+ "INSERT INTO users (username, password, prime_contact) VALUES(\"cejiofor\", \"password\", false);";
-
-
-		String varname14 = ""
-		+ "INSERT INTO users (username, password, prime_contact) VALUES(\"bobdylan\", \"password\", false);";
-
-
-		String varname15 = ""
-		+ "INSERT INTO users (username, password, prime_contact) VALUES(\"sjobs\", \"password\", false);";
-
-
-		String varname16 = ""
-		+ "DROP TABLE IF EXISTS volunteers;";
-
-
-		String varname17 = ""
-		+ "CREATE TABLE volunteers ( "
-		+ "	volunteer_id int PRIMARY KEY AUTO_INCREMENT, "
-		+ "	user_id int NOT NULL, "
-		+ "	volunteer_name VARCHAR(100), "
-		+ "	email VARCHAR(100), "
-		+ "	address VARCHAR(100), "
-		+ "	FOREIGN KEY (user_id) REFERENCES users(user_id), "
-		+ "	CONSTRAINT `volunteer_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE "
-		+ ");";
-
-
-		String varname18 = ""
-		+ "INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(1, \"Chris Ejiofor\", \"cejiofor@gmail.com\", \"123 Fake Street, Dallas, TX USA\");";
-
-
-		String varname19 = ""
-		+ "INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(2, \"Bob Dylan\", \"bdylan@gmail.com\", \"123 Fake Road, Plano, TX USA\");";
-
-
-		String varname110 = ""
-		+ "INSERT INTO volunteers (user_id, volunteer_name, email, address) VALUES(3, \"Steve Jobs\", \"sjobs@gmail.com\", \"123 Fake Street, Fort Worth, TX USA\");";
-
-
-		String varname111 = ""
-		+ "DROP TABLE IF EXISTS orgs;";
-
-
-		String varname112 = ""
-		+ "CREATE TABLE orgs ( "
-		+ "	org_id VARCHAR(100) PRIMARY KEY NOT NULL, "
-		+ "	mission_id VARCHAR(100), "
-		+ "	org_name VARCHAR(100), "
-		+ "	email VARCHAR(100), "
-		+ "	address VARCHAR(100), "
-		+ "	user_id INT NOT NULL, "
-		+ "	CONSTRAINT `orgs_user_fk` FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE "
-		+ ");";
-
-
-		String varname113 = ""
-		+ "DROP TABLE IF EXISTS projects;";
-
-
-		String varname114 = ""
-		+ "CREATE TABLE projects ( "
-		+ "	project_id INT PRIMARY KEY NOT NULL, "
-		+ "	org_name VARCHAR(100), "
-		+ "	city VARCHAR(100), "
-		+ "	country VARCHAR(100), "
-		+ "	startDate DATE, "
-		+ "	endDate DATE, "
-		+ "	skill_id VARCHAR(100), "
-		+ "	address VARCHAR(100), "
-		+ "	org_id VARCHAR(100) NOT NULL, "
-		+ "	CONSTRAINT `projectOrg_fk` FOREIGN KEY (org_id) REFERENCES orgs (org_id) ON DELETE CASCADE "
-		+ ");";
-
-
-		String varname115 = ""
-		+ "DROP TABLE IF EXISTS skills;";
-
-
-		String varname116 = ""
-		+ "CREATE TABLE skills ( "
-		+ "	skill_id VARCHAR(100) PRIMARY KEY NOT NULL, "
-		+ "	skill_name VARCHAR(100), "
-		+ "	description VARCHAR(100) "
-		+ ");";
-
-
-		String varname117 = ""
-		+ "DROP TABLE IF EXISTS volunteer_skills;";
-
-
-		String varname118 = ""
-		+ "CREATE TABLE volunteer_skills( "
-		+ "	project_id VARCHAR(100) REFERENCES projects(project_id), "
-		+ "	volunteer_id VARCHAR(100) REFERENCES volunteers(volunteer_id), "
-		+ "	skill_id VARCHAR(100) REFERENCES skills(skill_id) "
-		+ ");";
-
-
-		String varname119 = ""
-		+ "DROP TABLE IF EXISTS project_member;";
-
-
-		String varname120 = ""
-		+ "CREATE TABLE project_member( "
-		+ "	project_id VARCHAR(100) REFERENCES projects(project_id), "
-		+ "	org_id VARCHAR(100) REFERENCES orgs(org_id), "
-		+ "	skill_id VARCHAR(100) REFERENCES skills(skill_id), "
-		+ "	CONSTRAINT PRIMARY KEY (project_id, org_id) "
-		+ ");";
-
-		String varname121 = ""
-				+ "SET foreign_key_checks = 1;";
-		
-		// Create a list of strings to loop over to rund sql queries
-		List<String> sqlArr = new ArrayList<String>();
-		sqlArr.add(varname1); 
-		sqlArr.add(varname11);
-		sqlArr.add(varname12);
-		sqlArr.add(varname13);
-		sqlArr.add(varname14);
-		sqlArr.add(varname15); 
-		sqlArr.add(varname16);
-		sqlArr.add(varname17);
-		sqlArr.add(varname18);
-		sqlArr.add(varname19);
-		sqlArr.add(varname110);
-		sqlArr.add(varname111);
-		sqlArr.add(varname112);
-		sqlArr.add(varname113);
-		sqlArr.add(varname114);
-		sqlArr.add(varname115);
-		sqlArr.add(varname116);
-		sqlArr.add(varname117);
-		sqlArr.add(varname118);
-		sqlArr.add(varname119);
-		sqlArr.add(varname120);
-		sqlArr.add(varname121);
-		
-		// Create MySqlConnection class instance
-		MariaDBConnection mariaDB = new MariaDBConnection();
-		
-		// Begin try/catch block to query the database
-		try
-		{
-			// Connect to database and assign query string to PreparedStatement object
-			conn = mariaDB.getConnection();
-			stmt = conn.createStatement();
-			for (String s: sqlArr) {
-				// Run query and assign to ResultSet
-				updateResult = stmt.executeUpdate(s);
-			}
-			
 		}
 		catch (ClassNotFoundException | SQLException e)
 		{
