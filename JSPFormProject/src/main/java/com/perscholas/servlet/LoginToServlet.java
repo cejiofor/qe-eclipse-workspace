@@ -15,22 +15,23 @@ public class LoginToServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 		request.getRequestDispatcher("LoginForm.jsp")
 		.forward(request, response);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("userName");
-		String userPassword = request.getParameter("userPassword");
-		
-		if (userName.equals("testUser") && userPassword.equals("testPassword")) {
-			request.setAttribute("userName", userName);
-			request.getRequestDispatcher("Birthday.jsp")
-			.forward(request, response);
-		} else {
-			request.setAttribute("error", "Invalid Login");
-			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
-		}
+//		String userName = request.getParameter("userName");
+//		String userPassword = request.getParameter("userPassword");
+//		
+//		if (userName.equals("testUser") && userPassword.equals("testPassword")) {
+//			request.setAttribute("userName", userName);
+//			request.getRequestDispatcher("Birthday.jsp")
+//			.forward(request, response);
+//		} else {
+//			request.setAttribute("error", "Invalid Login");
+//			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+//		}
 	}
 }

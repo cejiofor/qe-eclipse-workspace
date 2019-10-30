@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HiddenFieldsServlet
  */
+
 @WebServlet("/HiddenFieldsServlet")
 public class HiddenFieldsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = new User(1, "John", "john@doe.com");
 		request.setAttribute("currentUser", user);
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/HiddenFields.jsp");
@@ -37,5 +37,8 @@ public class HiddenFieldsServlet extends HttpServlet {
 							+ "\nName: " + user.getName()
 							+ "\nEmail: " + user.getEmail() + "\n");
 	}
+
+}
+
 
 }

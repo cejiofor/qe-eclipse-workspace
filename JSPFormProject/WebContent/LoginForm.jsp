@@ -9,15 +9,34 @@
 	the outer if statement below will not run unless the "Login" button has been clicked. 
 	-->
 	<% 	String error = null;
+		Cookie[] cookies = request.getCookies();
+		String usrName = null;
+		String usrPassword = null;
+		
+		for(Cookie c : cookies){
+			if(c.getName().equals("username")){
+				usrName = c.getValue();
+			}
+			if(c.getName().equals("password")){
+				usrPassword = c.getValue();
+			}
+		}
+		
 		if (request.getParameter("login") != null) {
 			String userName = request.getParameter("userName");
 			String userPassword = request.getParameter("userPassword");
-			if (userName.equals("testUser") && userPassword.equals("testPassword")) {
-				response.sendRedirect("LoginForm.jsp");
+			if (userName.equals(usrName) && userPassword.equals(usrPassword)) {
+				response.sendRedirect("Birthday.jsp");
 			} else {
 				error = "Login unsuccessful.";
 			}
-		} %>	
+		}
+		if (request.getParameter("login") != null) {
+			response.sendRedirect("Register.jsp");
+		}
+		
+		
+		%>	
 	</head>
 <body>
 	

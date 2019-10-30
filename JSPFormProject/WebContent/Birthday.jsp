@@ -8,10 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Birthday Page</title>
-<% 	//session.setAttribute("sessionVar", "newUser");
-	//session.setAttribute("username", "testUser");
-	Cookie[] cookies = request.getCookies();
-	String bDayString = cookies[1].getValue();
+<% 	
+Cookie[] cookies = request.getCookies();
+	for(Cookie c : cookies){
+		if(c.getName().equals("username")){
+			usrName = c.getValue();
+		}
+		if(c.getName().equals("password")){
+			usrPassword = c.getValue();
+		}
+	}
 %>
 
 
@@ -34,7 +40,6 @@
 		request.setAttribute("error", "Login unsuccessful.");
 		request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
 	} 
-	
 	if (!userPassword.equals(userPasswordTwo)) {
 		request.setAttribute("error", "Passwords do not match. Please try again.");
 		request.getRequestDispatcher("Register.jsp").forward(request, response);
