@@ -28,10 +28,14 @@
 		<p style="color: red;"><%= error %></p>
 	<% } %>
 	
-	<form action="Success.jsp" method="post">
+	<form action="Birthday.jsp" method="post">
 		<label>User Name:&nbsp;<input type="text" name="userName" /></label>
 		<label>Password:&nbsp;<input type="password" name="userPassword" /></label>
+		<br>
 		<input type="submit" name="login" value="Login" />
+	</form>
+	<form action="Register.jsp" method="post">
+		<input type="submit" name="Register" value="Register" />
 	</form>
 </body>
 </html>

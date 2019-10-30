@@ -1,4 +1,4 @@
-package com.perscholas.forms;
+package com.perscholas.servlet;
 
 import java.io.IOException;
 
@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LoginToServlet")
+public class LoginToServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.getRequestDispatcher("LoginFromServlet.jsp")
+		request.getRequestDispatcher("LoginForm.jsp")
 		.forward(request, response);
 	}
 	
@@ -26,11 +26,11 @@ public class LoginServlet extends HttpServlet {
 		
 		if (userName.equals("testUser") && userPassword.equals("testPassword")) {
 			request.setAttribute("userName", userName);
-			request.getRequestDispatcher("Success.jsp")
+			request.getRequestDispatcher("Birthday.jsp")
 			.forward(request, response);
 		} else {
 			request.setAttribute("error", "Invalid Login");
-			request.getRequestDispatcher("LoginFromServlet.jsp").forward(request, response);
+			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
 		}
 	}
 }
