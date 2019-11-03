@@ -1,4 +1,4 @@
-package com.perscholas.servlettest.servlets;
+package com.perscholas.forms;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
