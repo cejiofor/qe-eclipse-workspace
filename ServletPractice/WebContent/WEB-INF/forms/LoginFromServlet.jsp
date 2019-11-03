@@ -13,7 +13,7 @@
 		<p style="color: red;"><%= request.getAttribute("error") %></p>
 	<% } %>
 	
-	<form action="${pageContext.request.contextPath}/LoginServlet" method="post">
+	<form action="${pageContext.request.contextPath}/TestLoginServlet" method="post">
 		<label>User Name:&nbsp;<input type="text" name="userName" /></label>
 		<label>Password:&nbsp;<input type="password" name="userPassword" /></label>
 		<input type="submit" name="login" value="Login" />

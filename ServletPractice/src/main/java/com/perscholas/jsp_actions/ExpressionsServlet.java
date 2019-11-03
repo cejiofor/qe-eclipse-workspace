@@ -1,4 +1,4 @@
-package com.perscholas.forms;
+package com.perscholas.jsp_actions;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,17 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HomeServlet
+ * Servlet implementation class Expressions
  */
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/ExpressionsServlet")
+public class ExpressionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
-        // TODO Auto-generated constructor stub
+    public ExpressionsServlet() {
+		// TODO Auto-generated constructor stub
+    	super();
     }
 
 	/**
@@ -26,7 +27,8 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("WEB-INF/views/Expressions.jsp").forward(request, response);
 	}
 
 	/**

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/TestLoginServlet")
+public class TestLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
