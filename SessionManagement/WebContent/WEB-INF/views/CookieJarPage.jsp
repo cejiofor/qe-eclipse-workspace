@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Cookies</title>
+	<title>Cookie Jar Page</title>
 	<% 
 		Cookie[] cookies = request.getCookies();
 		Cookie favCookie = null;
@@ -25,9 +25,8 @@
 	<h1>My Cookie Info</h1>
 	<p><% out.print(favCookie.getName()); %></p>
 	<p><% out.print(favCookie.getValue()); %></p>
-<%-- 	<p>${favCookie.getName()}</p> --%>
-<%-- 	<p>${favCookie.getValue()}</p> --%>
-	<a href="${pageContext.request.contextPath}/CookieJarServlet">Cookie Jar Page</a>
+	
+	<a href="${pageContext.request.contextPath}/CookiesServlet">Cookies Page</a>
 	
 </body>
 </html>
