@@ -22,14 +22,14 @@
 			<th>Course Description</th>
 		</tr>
 		<% 
-			for(Course c:courseList){
-				out.print(c.getCourseId());
-				out.print(c.getName());
-				out.print(c.getDescription());
-			}
-		
-			
-		
+			for(Course c:courseList)
+			{%> 
+				<tr>
+					<td><%=c.getCourseId() %></td>
+					<td><%=c.getName() %></td>
+					<td><%=c.getDescription() %></td>
+				</tr>
+			<%}
 		%>
 	</table>
 	

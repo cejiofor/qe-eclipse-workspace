@@ -32,9 +32,9 @@ public class HomeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<Course> courseList = new ArrayList<Course>();
 
-		Course courseOne = new Course(1, "English", "Leanring english");
-		Course courseTwo = new Course(2, "Math", "Leanring mathematics");
-		Course courseThree = new Course(3, "Physics", "Leanring physics");
+		Course courseOne = new Course(1, "English", "Learning english");
+		Course courseTwo = new Course(2, "Math", "Learning mathematics");
+		Course courseThree = new Course(3, "Physics", "Learning physics");
 		
 		courseList.add(courseOne);
 		courseList.add(courseTwo);
