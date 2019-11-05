@@ -5,18 +5,18 @@ public class Member {
 	private String name;
 	private String email;
 	private String password;
-	private String favoriteLanguage;
+	private String favoriteGenre;
 	
 	public Member() {
 		super();
 	}
 
-	public Member(String name, String email, String password, String favoriteLanguage) {
+	public Member(String name, String email, String password, String favoriteGenre) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.favoriteLanguage = favoriteLanguage;
+		this.favoriteGenre = favoriteGenre;
 	}
 
 	public int getMemberId() {
@@ -51,12 +51,12 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getFavoriteLanguage() {
-		return favoriteLanguage;
+	public String getFavoriteGenre() {
+		return favoriteGenre;
 	}
 
-	public void setFavoriteLanguage(String favoriteLanguage) {
-		this.favoriteLanguage = favoriteLanguage;
+	public void setFavoriteGenre(String favoriteGenre) {
+		this.favoriteGenre = favoriteGenre;
 	}
 	
 	
