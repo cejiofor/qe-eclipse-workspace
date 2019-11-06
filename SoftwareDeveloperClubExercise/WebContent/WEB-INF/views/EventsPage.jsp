@@ -4,18 +4,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- IMPORT CSS FOR PAGE AND NAVIGATION HERE -->
+
 <meta charset="ISO-8859-1">
 <title>Events Page</title>
 </head>
 <body>
 	<h1>Events</h1>
-<%-- 	<% --%>
-// 		EventDAO edao = new EventDAO();
-// 		List<Events> eventList = edao.getEvents();
-// 		for(Event e:eventList){
-			
-// 		}
-<%-- 	%> --%>
+	<%@ include file="Navigation.html" %>
+	<form action="${pageContext.request.contextPath}/HomeServlet/createEvent" method="post">
+		<div>
+			<label>Event Title: </label>
+			<input name="title" />
+		</div>
+		<div>
+			<label>Event Description: </label>
+			<input name="description" />
+		</div>
+		<div>
+			<label>Event Location: </label>
+			<input name="location" />
+		</div>
+		<div>
+			<label>Date &amp; Time: </label>
+			<input type="datetime-local" name="dateTime" />
+		</div>
+		<div>
+			<input type="submit" value="Create Event" />
+		</div>
+	</form>
+	
 	<table>
 		<tr>
 			<th>Event ID</th>
@@ -23,50 +41,37 @@
 			<th>Description</th>
 			<th>Location</th>
 			<th>Date Time</th>
-			<th>Member ID</th>
 		</tr>
+		
 		<c:forEach items="${eventList}" var="event">
 			<tr>
-<%-- 				<td>${event.eventId}</td> --%>
 				<td>${event.title}</td>
 				<td>${event.description}</td>
 				<td>${event.location}</td>
 				<td>${event.dateTime}</td>
-<%-- 				<td>${event.memberId}</td> --%>
-				<c:if test="${currentUser.memberId == event.eventId }">
-					<a href="#">Delete</a>
-				</c:if>
-				<c:if test="${currentUser.memberId == event.eventId }">
-					<a href="#">Delete</a>
-				</c:if>
-				<c:choose>
-					<c:when test="${currentMember.memberId == event.memberId}">
-					</c:when>
-				</c:choose>
+				<td>
+					<!-- Switch statement for table end, depends on user status-->
+					<!-- Outer Condition check to see if logged in member created event -->
+					<c:choose>
+						<!-- Allow creators to delete event -->
+						<c:when test = "${currentMember.memberId == event.memberId}">
+			            	<a href="${pageContext.request.contextPath}/Homeservlet/deleteEvent}">Delete</a>
+			         	</c:when>
+			         	<c:otherwise>
+							<c:choose>
+								<!-- Current attendees are given option to cancel, all others to sign up-->
+								<c:when test="${event.attendersContainsIdStream(currentMember.memberId)}">
+									<a href="${pageContext.request.contextPath}/HomeServlet/cancelSignup?memberId=${currentMember.memberId}&eventId=${event.eventId}">Cancel</a>
+								</c:when>
+								<otherwise>
+									<a href="${pageContext.request.contextPath}/HomeServlet/signUpForEvent?memberId=${currentMember.memberId}&eventId=${event.eventId}">SignUp</a>
+								</otherwise>	
+							</c:choose>
+						</c:otherwise>
+		      		</c:choose>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	
-	<form action="${pageContext.request.contextPath}/HomeServlet/createEvent" method="post">
-		<div>
-			<label>Event Title: </label>
-			<input name="title" />
-		</div>
-		<div>
-			<label>Description: </label>
-			<input name="description" />
-		</div>
-		<div>
-			<label>Location: </label>
-			<input name="location" type="password" />
-		</div>
-		<div>
-			<label>Date &amp; TIme: </label>
-			<input type="datetime-local" name="dateTime" />
-		</div>
-		<div>
-			<input type="submit" value="Create Event" />
-		</div>
-	</form>
 </body>
 </html>

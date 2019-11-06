@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS members;
+-- DROP TABLE IF EXISTS members;
 CREATE TABLE members (
 	member_id INT AUTO_INCREMENT,
 	name VARCHAR(100),
@@ -10,8 +10,7 @@ CREATE TABLE members (
 
 
 SELECT * FROM members;
-
-DROP TABLE IF EXISTS events;
+-- DROP TABLE IF EXISTS events;
 CREATE TABLE events (
 	event_id INT AUTO_INCREMENT,
 	title VARCHAR(100),
@@ -23,4 +22,16 @@ CREATE TABLE events (
 	FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
 );
 
-SELECT * FROM events;
+SELECT * FROM EVENTS;
+
+
+SELECT members.member_id, events.event_id FROM 
+	members
+	JOIN events
+	ON members.member_id = EVENTS.member_id
+	AS signups;
+	
+SELECT * FROM signups;
+
+-- signups_member_id, signups_event_id
+-- JOIN members.member_id, EVENTS.event_id WHERE members.member_id = EVENT.member_id AS sugnups;

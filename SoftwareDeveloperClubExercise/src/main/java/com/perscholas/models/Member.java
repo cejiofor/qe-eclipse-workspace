@@ -18,6 +18,15 @@ public class Member {
 		this.password = password;
 		this.favoriteLanguage = favoriteLanguage;
 	}
+	
+	public Member(int memberId, String name, String email, String password, String favoriteLanguage) {
+		super();
+		this.memberId = memberId;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.favoriteLanguage = favoriteLanguage;
+	}
 
 	public int getMemberId() {
 		return memberId;

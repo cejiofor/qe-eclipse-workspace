@@ -8,12 +8,14 @@
 </head>
 <body>
 	<h1>Login</h1>
+	<%@ include file="Navigation.html" %>
+	
 	<p style="color:red;">${errorMessage}</p>
 	
-	<% if (request.getAttribute("error") != null) {%>
-	    <p style="color: red;"><%= request.getAttribute("error") %></p>
-	<% } %>
-	
+<%-- 	<% if (request.getAttribute("errorMessage") != null) {%> --%>
+<%-- 	    <p style="color: red;"><%= request.getAttribute("errorMessage") %></p> --%>
+<%-- 	<% } %> --%>
+	<a href="${pageContext.request.contextPath}/HomeServlet/showRegistration">Register Here</a>
 	<form action="${pageContext.request.contextPath}/HomeServlet/loginMember" method="post">
 		<div>
 			<label>Name: </label>

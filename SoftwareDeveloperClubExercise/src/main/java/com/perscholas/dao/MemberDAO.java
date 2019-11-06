@@ -214,8 +214,7 @@ public class MemberDAO {
 					+ "email = ? "
 					+ "password = ? "
 					+ "favorite_language = ? "
-					+ "where member_id = "
-					+ "(Select min(member_id) from members)";
+					+ "where member_id = ?";
 			
 			//Create a connection to MariaDB database
 			sqlConnect = mariaDB.getConnection();
@@ -228,6 +227,7 @@ public class MemberDAO {
 			updateStmt.setString(2,member.getEmail());
 			updateStmt.setString(3,member.getPassword());
 			updateStmt.setString(4,member.getFavoriteLanguage());
+			updateStmt.setInt(5,member.getMemberId());
 			
 			// run the sql query
 			results = updateStmt.executeUpdate();

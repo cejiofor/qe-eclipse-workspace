@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.perscholas.models.Event;
+import com.perscholas.models.Member;
 
 public class EventDAO {
 	public void testConnection() {
@@ -35,8 +36,6 @@ public class EventDAO {
 		MariaDBConnection mariaDB = new MariaDBConnection();
 		
 		//Declare SQL variables to manage connection and read data
-		// String createQuery = null;
-		// Statement createStmt = null;
 		Connection sqlConnect = null;
 		PreparedStatement insertStmt = null;
 		String sqlQuery = null;
@@ -115,7 +114,7 @@ public class EventDAO {
 				event.setLocation(results.getString("location"));
 				event.setDateTime(results.getTimestamp("event_time").toLocalDateTime());
 				event.setMemberId(results.getInt("member_id"));
-				
+				event.setEventAttendees(getAttendersByEventId(event.getEventId()));
 				eventList.add(event);
 			}
 		} 
@@ -137,8 +136,70 @@ public class EventDAO {
 		return eventList;
 	}
 	
+	private List<Member> getAttendersByEventId(Integer eventId) throws SQLException{
+		// List to store all Members
+		List<Member> eventAttendees = new ArrayList();
+		// Create an instance of the mariaDB connection
+		MariaDBConnection mariaDB = new MariaDBConnection();
+		
+		// Declare SQL variables needed to manage connection and read data
+		Connection sqlConnect = null;
+		PreparedStatement selectStmt = null;
+		String selectQuery = null;
+		ResultSet results = null;
+		Member member = null;
+			
+		try {
+			//Create a connection to MariaDB database
+			sqlConnect = mariaDB.getConnection();
+			
+			// SQL query to be run to get Event from SQL table
+//			selectQuery = "SELECT * FROM events WHERE title = ?";
+			
+			selectQuery = "select members.member_id, members.name, members.email, members.password, "
+					+ "members.favorite_language from members join signups on members.member_id = "
+					+ "signups.members_member_id where signups.events_event_id = ?";
+			
+			
+			// Statement needed to run the sql query
+			selectStmt = sqlConnect.prepareStatement(selectQuery);
+			selectStmt.setInt(1, eventId);
+			
+			// run the sql query 
+			results = selectStmt.executeQuery();
+			
+			while (results.next())
+			{
+				member = new Member();
+				member.setMemberId(results.getInt(1));
+				member.setName(results.getString(2));
+				member.setEmail(results.getString(3));
+				member.setPassword(results.getString(4));
+				member.setFavoriteLanguage(results.getString(5));
+				eventAttendees.add(member);
+				
+			}		
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
+		}
+		finally {
+			if (results != null) {
+				results.close();
+			}
+			if (selectStmt != null) {
+				selectStmt.close();
+			}
+			if (sqlConnect != null) {
+				sqlConnect.close();
+			}
+		}
+		return eventAttendees;
+	}
+	
 	public Event getEvent(String title) throws SQLException {
-		Event Event = null;
 		// Create an instance of the mariaDB connection
 		MariaDBConnection mariaDB = new MariaDBConnection();
 		
@@ -165,6 +226,7 @@ public class EventDAO {
 			
 			while (results.next())
 			{
+				
 				System.out.println(event.toString());
 				event.setEventId(results.getInt("event_id"));
 				event.setTitle(results.getString("title"));
@@ -172,8 +234,6 @@ public class EventDAO {
 				event.setLocation(results.getString("location"));		
 				event.setDateTime(results.getTimestamp("event_time").toLocalDateTime());
 				event.setMemberId(results.getInt("member_id"));
-				
-				
 			}
 			
 		} 
@@ -215,8 +275,7 @@ public class EventDAO {
 					+ "location = ? "
 					+ "event_time = ? "
 					+ "member_id = ?"
-					+ "where event_id = ?"
-					+ "(Select min(event_id) from events)";
+					+ "where event_id = ?";
 			
 			//Create a connection to MariaDB database
 			sqlConnect = mariaDB.getConnection();
@@ -267,7 +326,7 @@ public class EventDAO {
 			sqlConnect = mariaDB.getConnection();
 			
 			// SQL query to be run to add student data to SQL table
-			removeQuery = "DELETE FROM evnts where event_id = ?";
+			removeQuery = "DELETE FROM events where event_id = ?";
 			
 			// Statement needed to run the sql query
 			removeStmt = sqlConnect.prepareStatement(removeQuery);

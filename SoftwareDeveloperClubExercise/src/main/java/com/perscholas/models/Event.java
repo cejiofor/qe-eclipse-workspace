@@ -1,6 +1,7 @@
 package com.perscholas.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Event {
 	private int eventId;
@@ -9,6 +10,7 @@ public class Event {
 	private String location;
 	private LocalDateTime dateTime;
 	private int memberId;
+	private List<Member> eventAttendees;
 	
 	public Event() {
 		super();
@@ -81,6 +83,16 @@ public class Event {
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
+
+	public List<Member> getEventAttendees() {
+		return eventAttendees;
+	}
+
+	public void setEventAttendees(List<Member> eventAttendees) {
+		this.eventAttendees = eventAttendees;
+	}
+	
+	
 
 	
 }

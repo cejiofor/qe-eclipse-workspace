@@ -8,6 +8,8 @@
 </head>
 <body>
 	<h1>Registration</h1>
+	<%@ include file="Navigation.html" %>
+	<a href="${pageContext.request.contextPath}/HomeServlet">Cancel</a>
 	
 	<% if (request.getAttribute("errorMessage") != null) {%>
 	    <p style="color: red;"><%= request.getAttribute("errorMessage") %></p>
@@ -19,11 +21,15 @@
 			<input name="name" />
 		</div>
 		<div>
-			<label>Member Email: </label>
+			<label>Email: </label>
 			<input name="email" />
 		</div>
 		<div>
-			<label>Member Password: </label>
+			<label>Password: </label>
+			<input name="password" type="password" />
+		</div>
+		<div>
+			<label>Confirm Password: </label>
 			<input name="password" type="password" />
 		</div>
 		<div>

@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>Welcome ${currentMember.name}</h1>
+	<%@ include file="Navigation.html" %>
 	
 </body>
 </html>
