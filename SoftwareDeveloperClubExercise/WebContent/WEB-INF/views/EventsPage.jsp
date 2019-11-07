@@ -53,19 +53,19 @@
 					<!-- Switch statement for table end, depends on user status-->
 					<!-- Outer Condition check to see if logged in member created event -->
 					<c:choose>
-						<!-- Allow creators to delete event -->
+						<%-- Allow creators to delete event --%>
 						<c:when test = "${currentMember.memberId == event.memberId}">
-			            	<a href="${pageContext.request.contextPath}/Homeservlet/deleteEvent}">Delete</a>
+			            	<a href="${pageContext.request.contextPath}/HomeServlet/deleteEvent">Delete</a>
 			         	</c:when>
 			         	<c:otherwise>
 							<c:choose>
-								<!-- Current attendees are given option to cancel, all others to sign up-->
-								<c:when test="${event.attendersContainsIdStream(currentMember.memberId)}">
+								<%-- Current attendees are given option to cancel, all others to sign up --%>
+								<c:when test="${event.attendersContainsIdLoop(currentMember.memberId)}">
 									<a href="${pageContext.request.contextPath}/HomeServlet/cancelSignup?memberId=${currentMember.memberId}&eventId=${event.eventId}">Cancel</a>
 								</c:when>
-								<otherwise>
+								<c:otherwise>
 									<a href="${pageContext.request.contextPath}/HomeServlet/signUpForEvent?memberId=${currentMember.memberId}&eventId=${event.eventId}">SignUp</a>
-								</otherwise>	
+								</c:otherwise>	
 							</c:choose>
 						</c:otherwise>
 		      		</c:choose>

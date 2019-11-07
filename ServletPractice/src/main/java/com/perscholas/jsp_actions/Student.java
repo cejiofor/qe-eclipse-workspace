@@ -6,6 +6,7 @@ public class Student implements Serializable {
 
 	// Attributes
 	private static final long serialVersionUID = 1L;
+	private int studentId;
 	private String name;
 	private String password;
 	private String course;
@@ -14,10 +15,28 @@ public class Student implements Serializable {
 	present, but included here for illustration. */
 	public Student() {}
 	
+	
+	public Student(int studentId, String name) {
+		super();
+		this.studentId = studentId;
+		this.name = name;
+	}
+
+
 	// Getters & Setters
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
 	public String getName() {
 		return name;
 	}

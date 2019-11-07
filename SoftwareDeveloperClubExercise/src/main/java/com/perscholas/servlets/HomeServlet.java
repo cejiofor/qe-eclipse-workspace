@@ -59,6 +59,7 @@ public class HomeServlet extends HttpServlet {
 			// FOr less swtich statment, can make different servlets, have the programs directed to other servlets taht have alternative webservlet annotations
 			switch(action){
 				case "/HomeServlet":
+					System.out.println("test");
 					showLogin(request, response);
 					break;
 				case "/HomeServlet/showLogin":
@@ -91,15 +92,21 @@ public class HomeServlet extends HttpServlet {
 				case "/HomeServlet/createEvent":
 					createEvent(request, response);
 					break;
-					
-//					cancelSignup
-//					signUpForEvent
-//					deleteEvent
+				case "/HomeServlet/signUpForEvent":
+					signUpForEvent(request, response);
+					break;
+				case "/HomeServlet/cancelSignup":
+					cancelSignUp(request, response);
+					break;
+				case "/HomeServlet/deleteEvent":
+					deleteEvent(request, response);
+					break;
 				case "/HomeServlet/logout":
 					logout(request, response);
 					break;
 				default:
 					showLogin(request, response);
+					System.out.println("default");
 					break;
 				}
 		}
@@ -228,7 +235,15 @@ public class HomeServlet extends HttpServlet {
 	}
 	
 	private void cancelSignUp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		HttpSession session = request.getSession();
+		Integer memberId = Integer.parseInt(request.getParameter("memberId"));
+		Integer eventId = Integer.parseInt(request.getParameter("eventId"));
+		System.out.println(memberId + ", " + eventId);
+		
+		SignUpDAO s_dao = new SignUpDAO();
+		s_dao.cancelSignup(memberId, eventId);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/HomeServlet/showEvents");
+		rd.forward(request, response);
 		
 	}
 	
@@ -240,7 +255,15 @@ public class HomeServlet extends HttpServlet {
 		SignUpDAO sdao = new SignUpDAO();
 		sdao.signupForEvent(memberId, eventId);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/HomeServlet/EventsPage");
+		RequestDispatcher rd = request.getRequestDispatcher("/HomeServlet/showEvents");
+		rd.forward(request, response);
+	}
+	
+	private void deleteEvent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		Integer eventId = Integer.parseInt(request.getParameter("eventId"));
+		EventDAO e_dao = new EventDAO();
+		e_dao.removeEvent(eventId);
+		RequestDispatcher rd = request.getRequestDispatcher("/HomeServlet/showEvents");
 		rd.forward(request, response);
 	}
 	

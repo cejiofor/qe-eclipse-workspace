@@ -1,4 +1,6 @@
--- DROP TABLE IF EXISTS members;
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS members;
 CREATE TABLE members (
 	member_id INT AUTO_INCREMENT,
 	name VARCHAR(100),
@@ -10,7 +12,7 @@ CREATE TABLE members (
 
 
 SELECT * FROM members;
--- DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS events;
 CREATE TABLE events (
 	event_id INT AUTO_INCREMENT,
 	title VARCHAR(100),
@@ -24,14 +26,17 @@ CREATE TABLE events (
 
 SELECT * FROM EVENTS;
 
+drop table if exists signups;
+CREATE TABLE signups (
+   signups_member_id INT NOT NULL,
+   signups_event_id INT NOT NULL,
+   PRIMARY KEY (signups_member_id , signups_event_id),
+   CONSTRAINT l_fk_eventId FOREIGN KEY (signups_event_id)
+       REFERENCES events (event_id)
+       ON UPDATE CASCADE ON DELETE CASCADE,
+   CONSTRAINT l_fk_memberId FOREIGN KEY (signups_member_id)
+       REFERENCES members (member_id)
+       ON UPDATE CASCADE ON DELETE CASCADE
+)  DEFAULT CHARSET=UTF8;
 
-SELECT members.member_id, events.event_id FROM 
-	members
-	JOIN events
-	ON members.member_id = EVENTS.member_id
-	AS signups;
-	
 SELECT * FROM signups;
-
--- signups_member_id, signups_event_id
--- JOIN members.member_id, EVENTS.event_id WHERE members.member_id = EVENT.member_id AS sugnups;

@@ -15,6 +15,10 @@ public class XmlServlet extends HttpServlet {
 	private String contextParamExample;
 	private ServletContext context;
 	
+	
+	/* During servlet initialization, the container passes the config 
+	 * object as an argument to the init method */
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		initParamExample = config.getInitParameter("servlet_init_param");

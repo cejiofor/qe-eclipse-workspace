@@ -3,6 +3,8 @@
   <groupId>ServletPractice</groupId>
   <artifactId>com.perscholas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
   <dependencies>
   	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
 	<dependency>
@@ -14,6 +16,13 @@
   </dependencies>
   <build>
     <plugins>
+   	<plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>

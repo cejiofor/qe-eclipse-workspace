@@ -56,7 +56,7 @@ public class EventDAO {
 			insertStmt.setString(2, description);
 			insertStmt.setString(3, location);
 			insertStmt.setTimestamp(4,Timestamp.valueOf(dateTime));
-			insertStmt.setInt(4, memberID);
+			insertStmt.setInt(5, memberID);
 			
 			
 			// run the sql query and return the new ID to a result variable
@@ -158,7 +158,7 @@ public class EventDAO {
 			
 			selectQuery = "select members.member_id, members.name, members.email, members.password, "
 					+ "members.favorite_language from members join signups on members.member_id = "
-					+ "signups.members_member_id where signups.events_event_id = ?";
+					+ "signups.signups_member_id where signups.signups_event_id = ?";
 			
 			
 			// Statement needed to run the sql query

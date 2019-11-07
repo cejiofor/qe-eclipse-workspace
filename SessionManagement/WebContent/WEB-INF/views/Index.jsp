@@ -11,7 +11,7 @@
 	<h1>Hello!</h1>
 	<p>Good Morning! Today is:</p>
 	<% LocalDateTime current = LocalDateTime.now(); %>
-	<% out.print(current.format(DateTimeFormatter.ofPattern("MMMM dd, yyyy hh:mm:ss a"))); %>
+	<% out.print(current.format(DateTimeFormatter.ofPattern("MMMM d, yyyy hh:mm:ss a"))); %>
 
 	<h1>School Name: ${schoolName}</h1>
 	

@@ -1,6 +1,7 @@
 package com.perscholas.models;
 
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 public class Event {
@@ -92,7 +93,53 @@ public class Event {
 		this.eventAttendees = eventAttendees;
 	}
 	
+	/******Methods to check for ID in eventAttenders******/
+	// Loop method
+	public Boolean attendersContainsIdLoop(Integer id) {
+		for (Member m : this.eventAttendees) {
+			if (m.getMemberId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// Iterator method
+	public Boolean attendersContainsIdIterator(Integer id) {
+		Iterator<Member> attenders = this.eventAttendees.iterator();
+		while(attenders.hasNext()) {
+			Member m = attenders.next();
+			if (m.getMemberId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// Stream method
+	public Boolean attendersContainsIdStream(Integer id) {
+		Member attender = this.eventAttendees.stream().filter(member -> id == 
+				member.getMemberId()).findAny().orElse(null);
+		if (attender != null) {
+			return true;
+		}
+		return false;
+	}
 	
-
+//	public static void main(String[] args) {
+//		Event ev = new Event();
+//		Member a1 = new Member();
+//		a1.setMemberId(1);
+//		Member a2 = new Member();
+//		a2.setMemberId(2);
+//		Member a3 = new Member();
+//		a3.setMemberId(3);
+//		
+//		Member currentUser = new Member();
+//		currentUser.setMemberId(3);
+//		
+//		ev.getEventAttenders().add(a1);
+//		ev.getEventAttenders().add(a2);
+//		ev.getEventAttenders().add(a3);
+//		System.out.println(ev.attendersContainsIdLoop(currentUser.getMemberId()));
+//	}
 	
 }
