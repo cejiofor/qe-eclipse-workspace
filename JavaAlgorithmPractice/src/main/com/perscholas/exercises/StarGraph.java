@@ -15,7 +15,7 @@ public class StarGraph {
 //		 ****
 //		*****
 	
-	public static Integer[] arr = {1,5,2,4,3};
+	public static Integer[] arr = {1,5,2,9,4,3};
 	
 	public static void graph(Integer[] arr) {
 		List<Integer> arrList = Arrays.asList(arr);
