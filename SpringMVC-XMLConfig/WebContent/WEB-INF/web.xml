@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>SpringMVC-XMLConfig</display-name>
+  <!-- The class "ContextLoaderListener" loads a WebApplicationContext
+	instance upon startup of the application and then shuts it down upon 
+	close of the application. The WebApplicationContext instance is based 
+	on the configuration file whose path is specified between the <param-value> 
+	tags within the <context-param> tags. You may read more about this at: 
+	https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/
+	springframework/web/context/ContextLoaderListener.html -->
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/Spring/rootConfig-context.xml</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>WebConfig</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- The dispatcher servlet named under these <servlet> tags will be
+		based on the configuration file webConfig-context.xml whose path is 
+		specified between the <param-value> tags -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/Spring/webConfig-context.xml</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>WebConfig</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
