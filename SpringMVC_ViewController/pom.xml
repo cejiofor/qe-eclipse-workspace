@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   <name>MVCViewController</name>
   <dependencies>
-  	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+  		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
