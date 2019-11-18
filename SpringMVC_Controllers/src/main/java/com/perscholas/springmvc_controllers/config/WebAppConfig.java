@@ -25,7 +25,6 @@ public class WebAppConfig implements WebMvcConfigurer{
 	@Bean
 	ObjectMapper objectMapper() {
 		// INDENT_OUTPUT allows for "pretty printing" of JSON data
-		//return new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		return new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 	}
 	
