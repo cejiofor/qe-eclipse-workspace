@@ -7,8 +7,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@Configuration
-@EnableWebMvc
+@Configuration //indicates class will include bean definitions
+@EnableWebMvc //provides some web functions, ability to utilize the @Valid annotation to validate the model 
 @ComponentScan("com.perscholas.springmvcjdbctemplate")
 public class WebAppConfig implements WebMvcConfigurer {
 	@Bean

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping
+@RequestMapping("/qualEng")
 public class QualEngController {
 	private String course = "Quality Engineering & Assurance";
 	private String displayPage = "PerScholasHome";
@@ -30,6 +30,12 @@ public class QualEngController {
 		mav.addObject("message", "2019-DAL-01");
 		return mav;
 	}
+//	@RequestMapping("/courseId")
+//	public String showCourseId(Model model) {
+//		model.addAttribute("heading", course);
+//		model.addAttribute("message", "2019-DAL-01");
+//		return displayPage;
+//	}
 	
 	//String return types
 	@RequestMapping("/location")
