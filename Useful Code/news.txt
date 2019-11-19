@@ -1,0 +1,5 @@
+Rest Controller Project: Write an application that returns a JSON data set of automobiles: vehicle ID, make, model, list of colors available. Include at least three vehicles in your dataset.
+
+QE Snack Signup App: Write an application that allows a user to register and login and then signup to bring snacks for the QE class. The application should allow users to add items to a list of snacks and then allow users to click on an item to signup to bring that item. Users can also cancel their signups. When a user signs up for an item, the page should indicate which student has offered to bring that item. Use NamedParameterJdbcTemplate and DataSource as well as Hibernate validation. Write Selenium tests for registering, logging in, and signing up for for an item.
+
+Copy the previous project and convert it to Hibernate ORM.
