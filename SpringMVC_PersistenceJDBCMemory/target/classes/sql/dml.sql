@@ -1,0 +1,2 @@
+INSERT INTO STUDENTS (NAME, EMAIL) VALUES ('John', 'john@doe.com');
+INSERT INTO STUDENTS (NAME, EMAIL) VALUES ('Jane', 'jane@doe.com');
