@@ -1,33 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login Page</title>
-</head>
-<body>
-	<h1>Login</h1>
-<%-- 	<%@ include file="Navigation.html" %> --%>
-	
-	<p style="color:red;">${errorMessage}</p>
-	
-<%-- 	<% if (request.getAttribute("errorMessage") != null) {%> --%>
-<%-- 	    <p style="color: red;"><%= request.getAttribute("errorMessage") %></p> --%>
-<%-- 	<% } %> --%>
-	<a href="${pageContext.request.contextPath}/showRegistration">Register Here</a>
-	<form action="${pageContext.request.contextPath}/loginMember" method="post">
-		<div>
-			<label>Name: </label>
-			<input name="name" />
-		</div>
-		<div>
-			<label>Password: </label>
-			<input name="password" type="password" />
-		</div>
-		<div>
-			<input type="submit" value="Login" />
-		</div>
-	</form>
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login Page</title>
+		<style>
+		    .error {
+				color: red;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Welcome to Travel Corps</h1>
+		<form:form action="${pageContext.request.contextPath}/loginUser" method="post" modelAttribute="user">
+		<fieldset>
+		    <legend>Login Here</legend>
+		    <p style="color:red;">${errorMessage}</p>
+		    <div>
+				<label for="userName">Username: </label>
+				<div>
+				    <form:input path="userName" />
+					<p><form:errors path="userName" class="error" /></p>
+				</div>
+		    </div>
+		    <div>
+				<label for="password">Password</label>
+				<div>
+				    <form:input path="password" />
+				    <p><form:errors path="password" class="error" /></p>
+				</div>
+		    </div>
+		    <input type="submit" value="Login">
+		</fieldset>
+		</form:form>
+		<a href="${pageContext.request.contextPath}/showRegistration">Register Here</a>
+	</body>
 </html>
