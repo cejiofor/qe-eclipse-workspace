@@ -9,7 +9,7 @@ package com.perscholas.exercises;
  	* Node head
  * Write a method to add a node to the linked lists
  * Write a method to remove a node from the linked list
- * 
+ * Write a method to insert a node into the linked list after a specific value
  * */
 
 public class SinglyLinkedList {
@@ -54,17 +54,14 @@ public class SinglyLinkedList {
 		return length;
 	}
 	
-	// Remove head node, set head to the next node
-	public void deleteFromHead() {
-		this.head = this.head.getNextNode();
-		 
-	}
-	
-	//ADD FIND NODE METHOD HERE!!
+	// Find object in list and return node
 	public Node find(Object obj){
 		Node current = this.head;
 		while (current != null) {
-			if(current.getClass().equals(obj.getClass())) {
+			// if(current.getClass().equals(obj.getClass())) {
+			// 	return current;
+			// }
+			if (current.getValue().equals(obj)){
 				return current;
 			}
 			current = current.getNextNode();
@@ -72,34 +69,31 @@ public class SinglyLinkedList {
 		return null;		
 	}
 	
-	public Object remove(Node removed) {
-		Object removeValue = removed.getValue();
+	public void remove(Object obj) {
 		Node current = this.head;
-		while(current != null) {
-			//Check if removed is @ headcure
-				if (removed.equals(current)) {
-					Object removedData = current.getValue();
-					deleteFromHead();
-					return removedData;
-				}
-				// create a copy of head 
-				// set head to head.next
-				// return copy of head
-			//Check if removed is btwn
-				else if (removed.equals(current.getNextNode())) {
-					Node nextNextNode = current.getNextNode().getNextNode();
-					Object removedData = current.getNextNode().getValue();
-					current.setNextNode(nextNextNode);
-					return removedData;
-				}
-				// create pointer to node befre
-				// set current to node before @pointer
-				// set pointer.next to current.next
-				// return current
-			//Check if removed is @tail
-				// 
+		Node prev = null;
+		//Check if removed is at head node
+		if (current.getValue().equals(obj)) {
+			prev = this.head;
+			this.setHead(current.getNextNode());
+			return;
 		}
-		return null;
+		while(current != null) {
+			prev = current;
+			current = current.getNextNode();
+			if (current.getValue().equals(obj)) {
+				prev.setNextNode(current.getNextNode());
+				return;
+			}
+		}
+	}
+
+	public void insertAtValue(Object value){
+		Node prev = this.find(value);
+		Node next = prev.getNextNode();
+		Node newNode = new Node(value);
+		prev.setNextNode(newNode);
+		newNode.setNextNode(next);
 	}
 
 }
