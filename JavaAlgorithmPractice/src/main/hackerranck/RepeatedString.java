@@ -5,21 +5,24 @@ import java.util.List;
 public class RepeatedString {
 	static long repeatedString(String s, long n) {
         long count =0;
-        for (int i=0; i<s.length(); i++) {
+        if (n>s.length()) {
+        	for (int i=0; i<s.length(); i++) {
+            	if (s.charAt(i) == 'a') {
+            		count++;
+            	}
+            }
+            
+            long numReps = n/s.length();
+            count *= numReps;
+            n = n%s.length();
+        }
+        
+        for (int i=0; i<n; i++) {
         	if (s.charAt(i) == 'a') {
         		count++;
         	}
         }
-        
-        long numReps = n/s.length();
-        count *= numReps;
-        
-        int remainder = (int)n%s.length();
-        for (int i=0; i<remainder; i++) {
-        	if (s.charAt(i) == 'a') {
-        		count++;
-        	}
-        }
+        System.out.println(count);
         return count;
         
     }
@@ -63,8 +66,12 @@ public class RepeatedString {
 	}
 	
 	public static void main(String[] args) {
-		long count = RepeatedString.repeatedString("a", 100000000);
-		System.out.println(count);
+        RepeatedString.repeatedString("aba", 10);
+        System.out.println(7);
+        RepeatedString.repeatedString("a", 1000000000000L);
+        System.out.println(1000000000000L);
+        RepeatedString.repeatedString("adaca", 3);
+        System.out.println(1);
 	}
 
 }
