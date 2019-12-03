@@ -1,51 +1,34 @@
 package com.perscholas.travelcorps.models;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class Volunteer extends User {
 	private int volunteerID;
-	private String volunteerName;
-	private String email;
-	private String address;
-	private List<Skill> skills;
+	private int userId;
+	private List<String> skills;
 	
 	public Volunteer() {
 		super();
 	}
 	
-	public Volunteer(int volunteerID, String volunteerName, String email, String address) {
+	public Volunteer(int volunteerID, int userId, List<String> skills) {
 		super();
 		this.volunteerID = volunteerID;
-		this.volunteerName = volunteerName;
-		this.email = email;
-		this.address = address;
-		this.skills = new ArrayList<Skill>();	
+		this.userId = userId;
+		this.skills = skills;
 	}
-	
-	public Volunteer(User user, String volunteerName, String email, String address) {
-		this.setUserId(user.getUserId());
-		this.setUserName(user.getUserName());
-		this.setPassword(user.getPassword());
-		this.setPrimeContact(user.getPrimeContact());
-		this.volunteerID = user.getUserId();
-		this.volunteerName = volunteerName;
-		this.email = email;
-		this.address = address;
-		this.skills = new ArrayList<Skill>();	
+
+	public Volunteer(int userId,
+			@Size(min = 2, max = 25, message = "Name must be between 2 and 25 characters long.") @NotBlank(message = "User Name is required.") String userName,
+			@Size(min = 8, message = "Password must be at least 8 characters long.") @NotBlank(message = "passoword is required.") String password,
+			String firstName, String lastName, String address, String city, String state, String country,
+			Boolean isVolunteer) {
+		super(userId, userName, password, firstName, lastName, address, city, state, country, isVolunteer);
 	}
-	
-	
-//	@Override
-//	public int getUserID() {
-//		return userID;
-//	}
-//	
-//	@Override
-//	public void setUserID(int userID) {
-//		this.userID = userID;
-//	}
-	
+
 	public int getVolunteerID() {
 		return volunteerID;
 	}
@@ -54,43 +37,23 @@ public class Volunteer extends User {
 		this.volunteerID = volunteerID;
 	}
 
-	public String getVolunteerName() {
-		return volunteerName;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setVolunteerName(String volunteerName) {
-		this.volunteerName = volunteerName;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public List<Skill> getSkills() {
+	public List<String> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<Skill> skills) {
+	public void setSkills(List<String> skills) {
 		this.skills = skills;
 	}
 
-	@Override
-	public String toString() {
-		return "Volunteer [volunteerID=" + volunteerID + ", volunteerName=" + volunteerName + ", email=" + email
-				+ ", address=" + address + ", skills=" + skills + ", toString()=" + super.toString() + "]";
-	}
+	
 	
 	
 

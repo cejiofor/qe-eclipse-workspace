@@ -17,24 +17,50 @@ public class User {
 	@Size(min=8, message="Password must be at least 8 characters long.")
 	@NotBlank(message="passoword is required.")
 	private String password;
-	
-	private Boolean primeContact;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String city;
+	private String state;
+	private String country;
+	private Boolean isVolunteer;
 	
 	public User() {
 	}
-	
-	public User(String userName, String password, Boolean primeContact) {
+
+	public User(
+			@Size(min = 2, max = 25, message = "Name must be between 2 and 25 characters long.") @NotBlank(message = "User Name is required.") String userName,
+			@Size(min = 8, message = "Password must be at least 8 characters long.") @NotBlank(message = "passoword is required.") String password,
+			String firstName, String lastName, String address, String city, String state, String country,
+			Boolean isVolunteer) {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.primeContact = primeContact;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.isVolunteer = isVolunteer;
 	}
 
-	public User(int userId, String userName, String password, Boolean primeContact) {
+	public User(int userId,
+			@Size(min = 2, max = 25, message = "Name must be between 2 and 25 characters long.") @NotBlank(message = "User Name is required.") String userName,
+			@Size(min = 8, message = "Password must be at least 8 characters long.") @NotBlank(message = "passoword is required.") String password,
+			String firstName, String lastName, String address, String city, String state, String country,
+			Boolean isVolunteer) {
+		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
-		this.primeContact = false;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.isVolunteer = isVolunteer;
 	}
 
 	public int getUserId() {
@@ -61,18 +87,69 @@ public class User {
 		this.password = password;
 	}
 
-	public Boolean getPrimeContact() {
-		return primeContact;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPrimeContact(Boolean primeContact) {
-		this.primeContact = primeContact;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Boolean getIsVolunteer() {
+		return isVolunteer;
+	}
+
+	public void setIsVolunteer(Boolean isVolunteer) {
+		this.isVolunteer = isVolunteer;
 	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", primeContact="
-				+ primeContact + "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", isVolunteer=" + isVolunteer + "]";
 	}
+	
+	
 	
 }

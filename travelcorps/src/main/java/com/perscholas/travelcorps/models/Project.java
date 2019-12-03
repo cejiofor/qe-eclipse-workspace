@@ -11,7 +11,7 @@ public class Project {
 	private Date startDate;
 	private Date endDate;
 	private int orgID;
-	private List<Skill> skills;
+	private List<String> skills;
 
 	public Project() {
 	}
@@ -93,11 +93,11 @@ public class Project {
 		this.orgID = orgID;
 	}
 
-	public List<Skill> getSkills() {
+	public List<String> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<Skill> skills) {
+	public void setSkills(List<String> skills) {
 		this.skills = skills;
 	}
 

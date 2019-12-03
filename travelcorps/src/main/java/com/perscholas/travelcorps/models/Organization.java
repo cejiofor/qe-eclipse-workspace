@@ -3,29 +3,41 @@ package com.perscholas.travelcorps.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Organization extends User{
+public class Organization{
 	private int orgID;
 	private String orgName;
 	private String website;
 	private String mission;
 	private String email;
 	private String address;
+	private int primeContactId;
 	private List<Project> projects;
 	
 	public Organization() {
 		super();
 	}
 	
-	public Organization(String orgName, String website, String mission, String email, String address) {
+	public Organization(String orgName, String website, String mission, String email, String address, int primeContactId) {
 		super();
-		this.orgID = this.getUserId();
 		this.orgName = orgName;
 		this.website = website;
 		this.mission = mission;
 		this.email = email;
 		this.address = address;
+		this.primeContactId = primeContactId;
 		this.projects = new ArrayList<Project>();
-		
+	}
+
+	public Organization(int orgID, String orgName, String website, String mission, String email, String address,
+			int primeContactId) {
+		super();
+		this.orgID = orgID;
+		this.orgName = orgName;
+		this.website = website;
+		this.mission = mission;
+		this.email = email;
+		this.address = address;
+		this.primeContactId = primeContactId;
 	}
 
 	public int getOrgID() {
@@ -52,6 +64,14 @@ public class Organization extends User{
 		this.website = website;
 	}
 
+	public String getMission() {
+		return mission;
+	}
+
+	public void setMission(String mission) {
+		this.mission = mission;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -68,12 +88,12 @@ public class Organization extends User{
 		this.address = address;
 	}
 
-	public String getMission() {
-		return mission;
+	public int getPrimeContactId() {
+		return primeContactId;
 	}
 
-	public void setMission(String mission) {
-		this.mission = mission;
+	public void setPrimeContactId(int primeContactId) {
+		this.primeContactId = primeContactId;
 	}
 
 	public List<Project> getProjects() {
