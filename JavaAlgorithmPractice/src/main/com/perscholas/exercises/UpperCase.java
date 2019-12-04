@@ -1,5 +1,11 @@
 package com.perscholas.exercises;
+<<<<<<< HEAD
 import java.util.Arrays;
+=======
+
+import java.util.Arrays;
+
+>>>>>>> dbb170b1a22430cbfbaea715c8fa9c37745eccd5
 public class UpperCase {
 	/* Write an application with a method that takes a string with multiple words 
 	 * (such as a sentence) and capitalizes each word and returns the string.
@@ -24,4 +30,8 @@ public class UpperCase {
 		upperCaseSentence(test);
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dbb170b1a22430cbfbaea715c8fa9c37745eccd5

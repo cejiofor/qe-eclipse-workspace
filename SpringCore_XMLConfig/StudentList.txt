@@ -1,0 +1,4 @@
+NAME,PASSWORD,COURSE
+John,john1234,QEA
+Jane,jane1234,DE
+Janice,jan1234,ASM
