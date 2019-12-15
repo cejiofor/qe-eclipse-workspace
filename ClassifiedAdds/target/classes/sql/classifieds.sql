@@ -12,5 +12,5 @@ CREATE TABLE adds(
 	item VARCHAR(45),
 	price DOUBLE,
 	available BOOL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (add_id)
 );

@@ -10,6 +10,10 @@ package com.perscholas.exercises;
  * Write a method to add a node to the linked lists
  * Write a method to remove a node from the linked list
  * Write a method to insert a node into the linked list after a specific value
+ * Write a method for a singly-linked list to find the midpoint of the list.
+ * If the list has an even number of nodes then the midpoint will be the last node of the first half of the list
+ * Write a method for a singly-linked list that will find the nth node from the end.
+ * DUAL POINTERS
  * */
 
 public class SinglyLinkedList {
@@ -94,6 +98,25 @@ public class SinglyLinkedList {
 		Node newNode = new Node(value);
 		prev.setNextNode(newNode);
 		newNode.setNextNode(next);
+	}
+
+	public Node returnMiddle(){
+		int length = this.length();
+		int mid = length/2;
+		Node current = this.head;
+		int currIndex = 0;
+
+		if (length%2 != 1){
+			while(currIndex <= mid){
+				current = current.getNextNode();
+			}
+		}
+		else {
+			while(currIndex <= mid+1){
+				current = current.getNextNode();
+			}
+		}
+		return current;
 	}
 
 }
